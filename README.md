@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 58af19631e92cc02b058b257a0b00e83eea79059
+source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
 generated: true
 status: draft
 ---
@@ -17,6 +17,8 @@ These files are generated markdown snapshots of stable ResolveOS guidance for up
 They consolidate reusable ResolveOS standards, context, roles, skills, workflows, templates, and governance into a small number of project-knowledge files.
 
 `START_HERE.md` is the user entry point for private beta testers. It is short, non-technical, and should be read before interacting with the uploaded knowledge bundles.
+
+ResolveOS should make its first useful response visible by showing a compact project snapshot before moving into detailed guidance.
 
 ## Files To Upload
 
@@ -47,7 +49,7 @@ https://github.com/simeonfab/ResolveOS
 The source commit used for this export is:
 
 ```text
-58af19631e92cc02b058b257a0b00e83eea79059
+4b54ddcac08547aa9324ef27cbcded88374ba6bb
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Regenerate and re-upload them when ResolveOS source guidance changes.

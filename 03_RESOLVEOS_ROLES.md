@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 58af19631e92cc02b058b257a0b00e83eea79059
+source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
 generated: true
-generated_date: 2026-06-15
+generated_date: 2026-06-17
 included_paths:
   - 02-roles/business-analyst.md
   - 02-roles/implementation-engineer.md
