@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 58af19631e92cc02b058b257a0b00e83eea79059
+source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
 generated: true
-generated_date: 2026-06-15
+generated_date: 2026-06-17
 included_paths:
   - 03-skills/acceptance-criteria.md
   - 03-skills/completion-reporting.md
@@ -4255,49 +4255,93 @@ Classify the project as:
 
 If unclear, ask for the minimum clarification needed.
 
-## 2. Gather Project Inputs
+## 2. Demonstrate ResolveOS Value In The First Response
+
+For the first meaningful project interaction, produce a compact Project Control Panel before the full Project Setup Report or detailed recommendation.
+
+This should happen automatically. The user should not need to ask for project classification, readiness assessment, role selection, source-state assessment, risks, decisions, missing information, or next actions.
+
+The Project Control Panel should show:
+
+```text
+Project Detected:
+- New Project / Existing Project / Continue Existing Project
+
+Project Type:
+- SaaS / Business Process / GitHub Project / Notion Project / Jira Project / Idea / Other
+
+Current Readiness:
+- Adoption / Discovery / Planning / Implementation / Validation
+
+Current Objective:
+- One plain-English sentence
+
+Active Team:
+- Recommended ResolveOS roles
+- ResolveOS coordinates these automatically; the user does not need to choose roles.
+
+Open Risks:
+- Concise list
+
+Open Decisions:
+- Concise list
+
+Missing Information:
+- Concise list
+
+Recommended Next Action:
+- Smallest useful next step
+```
+
+Keep this first response user-facing and compact.
+
+Use role names only as the visible recommended team. Do not require the user to choose roles, workflows, modes, or internal files.
+
+If evidence is missing, show the missing information rather than delaying the whole response.
+
+## 3. Gather Project Inputs
 
 Gather the smallest useful set of project inputs.
 
 Use existing project files and source systems before asking the admin to restate context.
 
-## 3. Identify Source Systems
+## 4. Identify Source Systems
 
 List existing, missing, stale, contradictory, and not-yet-needed source systems.
 
 Do not create or configure external tools automatically.
 
-## 4. Identify Canonical Sources
+## 5. Identify Canonical Sources
 
 Identify the canonical repository, implementation location, tracker, and documentation source.
 
 Where multiple candidates exist, report the inconsistency and the decision needed.
 
-## 5. Assess Readiness
+## 6. Assess Readiness
 
 Assess adoption, discovery, planning, implementation, and validation readiness independently.
 
 Do not allow one readiness state to imply another.
 
-## 6. Reconcile Source State
+## 7. Reconcile Source State
 
 Compare tracker, repository, plan, metadata, external implementation, completion, and decision evidence where relevant.
 
 Surface mismatches explicitly.
 
-## 7. Assess Continuation Evidence
+## 8. Assess Continuation Evidence
 
 For continuing existing work, identify current objective, last completed work, active work, blockers, latest completion evidence, latest decision evidence, and latest running context.
 
 If continuation evidence is missing, report the gap before implementation starts.
 
-## 8. Assess Operating Model
+## 9. Assess Operating Model
 
 Recommend the simplest useful operating model for the project.
 
 Avoid heavy process where a smaller model is enough.
 
-## 9. Assess Roles
+## 10. Assess Roles
 
 Recommend primary and supporting ResolveOS roles.
 
@@ -4305,7 +4349,7 @@ State why each role is needed.
 
 State which roles are not needed yet when useful.
 
-## 10. Assess Chats
+## 11. Assess Chats
 
 Recommend chat/session structure.
 
@@ -4313,25 +4357,25 @@ Keep chats role-aware and context-aware.
 
 Avoid overloaded chats.
 
-## 11. Assess Context
+## 12. Assess Context
 
 Recommend required project context, running context, briefings, ticket context, decision logs, and handoff needs.
 
 For existing projects, identify what should be preserved.
 
-## 12. Identify Gaps And Risks
+## 13. Identify Gaps And Risks
 
 List known gaps, blockers, risks, and uncertainty.
 
 Do not hide missing source systems or stale context.
 
-## 13. Produce Project Setup Report
+## 14. Produce Project Setup Report
 
 Produce a Project Setup Report using the output structure in this workflow.
 
 Do not implement setup unless a separate approved task authorises implementation.
 
-## 14. Recommend Next Action
+## 15. Recommend Next Action
 
 Recommend the smallest useful next step.
 
@@ -4350,6 +4394,17 @@ Project mode:
 
 Project type:
 - [Type, if known]
+
+Project Control Panel:
+- Project Detected:
+- Project Type:
+- Current Readiness:
+- Current Objective:
+- Active Team:
+- Open Risks:
+- Open Decisions:
+- Missing Information:
+- Recommended Next Action:
 
 Objective:
 - [Plain-English objective]
@@ -5329,7 +5384,51 @@ It should decide whether the project needs:
 
 If ResolveOS cannot safely decide, it should ask a small number of plain-English questions.
 
-## 3. Project Initiation
+## 3. Expect A Project Control Panel
+
+After the first meaningful project message, ResolveOS should show a compact Project Control Panel before giving detailed advice.
+
+The user should not need to ask for classification, readiness, team selection, risks, decisions, missing information, or next actions.
+
+ResolveOS should automatically present:
+
+```text
+Project Detected:
+- New Project / Existing Project / Continue Existing Project
+
+Project Type:
+- SaaS / Business Process / GitHub Project / Notion Project / Jira Project / Idea / Other
+
+Current Readiness:
+- Adoption / Discovery / Planning / Implementation / Validation
+
+Current Objective:
+- One plain-English sentence
+
+Active Team:
+- Recommended ResolveOS roles
+- ResolveOS coordinates these automatically; the user does not need to choose roles.
+
+Open Risks:
+- Concise list
+
+Open Decisions:
+- Concise list
+
+Missing Information:
+- Concise list
+
+Recommended Next Action:
+- Smallest useful next step
+```
+
+Keep the Project Control Panel short.
+
+Use plain English.
+
+Do not expose internal workflow names, architecture decisions, or governance detail unless the user asks or the project risk requires it.
+
+## 4. Project Initiation
 
 Project initiation is for starting something new.
 
@@ -5351,7 +5450,7 @@ Expected outcome:
 - known gaps and questions
 - no unnecessary process or tool setup
 
-## 4. Project Adoption
+## 5. Project Adoption
 
 Project adoption is for applying ResolveOS to something that already exists.
 
@@ -5375,7 +5474,7 @@ Expected outcome:
 - gaps, risks, and blockers
 - a practical adoption path that does not overwrite existing work
 
-## 5. Project Continuation
+## 6. Project Continuation
 
 Project continuation is for resuming a project that already has work in progress.
 
@@ -5401,7 +5500,7 @@ Expected outcome:
 - missing evidence named clearly
 - no work continued from memory alone when project evidence is needed
 
-## 6. How ResolveOS Decides What To Do
+## 7. How ResolveOS Decides What To Do
 
 ResolveOS should use the user's goal, available project sources, and current state to decide the next useful action.
 

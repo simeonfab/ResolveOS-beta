@@ -37,6 +37,8 @@ You can provide:
 
 ResolveOS should identify whether your project is new, existing, or already in progress.
 
+It should first create a visible project snapshot so you can see the project type, readiness, active team, risks, missing information, and next action.
+
 Then it should ask only for missing essentials and recommend the smallest useful next step.
 
 You do not need to understand ResolveOS internals before you begin.
