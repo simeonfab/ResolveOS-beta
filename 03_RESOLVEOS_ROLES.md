@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
-generated_date: 2026-06-17
+generated_date: 2026-06-19
 included_paths:
   - 02-roles/business-analyst.md
   - 02-roles/implementation-engineer.md
@@ -1427,7 +1427,7 @@ Defect reports should identify:
 - affected scope or acceptance criteria
 - severity or risk only when source context supports it
 - whether the issue blocks completion
-- recommended next step
+- highest-leverage follow-up action
 
 Do not inflate findings into unrelated scope or product redesign.
 
@@ -1472,7 +1472,7 @@ If validation is blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, environment, data, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 
 Do not silently work around blockers.
 

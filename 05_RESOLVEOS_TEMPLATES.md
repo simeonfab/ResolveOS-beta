@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
-generated_date: 2026-06-17
+generated_date: 2026-06-19
 included_paths:
   - 04-templates/blocker-report-template.md
   - 04-templates/briefing-template.md
@@ -151,11 +151,11 @@ Option 2:
 - Why accepted or rejected:
 ```
 
-# Recommended Next Step
+# Highest-Leverage Unblocker
 
 ```text
-Smallest safe next step:
-- [The smallest useful action that resolves, narrows, or safely escalates the blocker.]
+Highest-leverage unblocker:
+- [The action expected to most effectively resolve, narrow, or safely escalate the blocker.]
 ```
 
 # Decision Required
@@ -296,9 +296,9 @@ Option 2:
 - Risk: cannot be treated as approved implementation scope.
 - Why accepted or rejected: usable only if admin approves a draft.
 
-Recommended Next Step
+Highest-Leverage Unblocker
 
-Smallest safe next step:
+Highest-leverage unblocker:
 - Provide acceptance criteria or approve a clearly marked draft for review.
 
 Decision Required
@@ -668,14 +668,19 @@ What confirms this briefing is usable:
 -
 ```
 
-# Recommended Next Action
+# Highest-Leverage Activity
 
 ```text
-Recommended next action:
+Highest-leverage activity:
 -
 
 Owner:
 - Admin / Product Manager / Business Analyst / QA Tester / Technical Strategy Lead / Implementation Engineer / Strategic Product Director / Project owner / Unknown
+
+Top 3 recommended actions:
+- [prioritised, concrete, outcome-focused, practical, time-bounded where possible]
+- [prioritised, concrete, outcome-focused, practical, time-bounded where possible]
+- [prioritised, concrete, outcome-focused, practical, time-bounded where possible]
 ```
 
 # Notes
@@ -861,13 +866,18 @@ Validation expected:
 What confirms this briefing is usable:
 - The current ticket, scope, dependency, and next action are clear.
 
-Recommended Next Action
+Highest-Leverage Activity
 
-Recommended next action:
+Highest-leverage activity:
 - Check previous-ticket outcome and then populate ticket context.
 
 Owner:
 - Implementation Engineer
+
+Top 3 recommended actions:
+- Confirm previous-ticket outcome.
+- Populate ticket context from source evidence.
+- Identify any blocker or missing prerequisite before implementation starts.
 
 Notes
 
@@ -1433,7 +1443,7 @@ Why continuing would be unsafe or unsupported:
 Needed input, config, source, credential, prerequisite, or decision:
 -
 
-Smallest useful next step:
+Highest-leverage unblocker or follow-up action:
 -
 ```
 
@@ -1724,7 +1734,7 @@ Decision title:
 - [Short title for the decision.]
 
 Decision status:
-- Proposed / Recommended / Approved / Rejected / Superseded / Deferred / Needs review
+- Proposed / Active / Superseded / Rejected
 
 Short decision summary:
 - [One or two plain-English sentences describing the decision.]
@@ -1829,9 +1839,18 @@ Final decision:
 - [The decision actually made.]
 
 Decision status:
-- Approved / Rejected / Deferred / Superseded / Needs review
+- Proposed / Active / Superseded / Rejected
 
 Approval or source of decision:
+-
+
+Supersedes, if applicable:
+-
+
+Superseded by, if applicable:
+-
+
+Reason rejected, if applicable:
 -
 ```
 
@@ -2888,14 +2907,19 @@ Reason:
 -
 ```
 
-# Next Action
+# Highest-Leverage Activity
 
 ```text
-Recommended next action:
+Highest-leverage activity:
 -
 
 Owner:
 - Admin / Product Manager / Business Analyst / QA Tester / Technical Strategy Lead / Implementation Engineer / Strategic Product Director / Project owner / Unknown
+
+Top 3 recommended actions:
+-
+-
+-
 ```
 
 # Notes
@@ -3052,13 +3076,18 @@ Status:
 Reason:
 - Previous-ticket state needs checking before implementation starts.
 
-Next Action
+Highest-Leverage Activity
 
-Recommended next action:
+Highest-leverage activity:
 - Check the previous ticket outcome and current repository state before implementation.
 
 Owner:
 - Implementation Engineer
+
+Top 3 recommended actions:
+- Confirm previous-ticket outcome.
+- Check current repository state.
+- Identify any blocker or missing prerequisite before implementation starts.
 
 Notes
 

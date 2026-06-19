@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
-generated_date: 2026-06-17
+generated_date: 2026-06-19
 included_paths:
   - 03-skills/acceptance-criteria.md
   - 03-skills/completion-reporting.md
@@ -648,7 +648,7 @@ If blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 
 Do not silently work around blockers.
 
@@ -860,7 +860,7 @@ Reason:
 - [blocker, decision, missing context, or failed validation]
 
 Next step:
-- [smallest useful next action]
+- [highest-leverage unblocker or follow-up action]
 ```
 
 ### Blocked Work
@@ -875,7 +875,7 @@ Current blocker:
 Why continuing is unsafe:
 [Why proceeding would require guessing, fake functionality, or unsupported assumptions]
 
-Smallest useful next step:
+Highest-leverage unblocker or follow-up action:
 [What is needed next]
 ```
 
@@ -1506,7 +1506,7 @@ The outcome should include:
 - scope or drift notes
 - risks
 - blockers
-- recommended next action
+- highest-leverage follow-up action
 
 Do not imply success when status is unknown.
 
@@ -2311,7 +2311,7 @@ Current blocker:
 Why continuing is unsafe:
 [Why implementation would require guessing, fake functionality, or unsupported assumptions]
 
-Smallest useful next step:
+Highest-leverage unblocker or follow-up action:
 [Prerequisite fix or admin decision needed]
 
 Suggested prerequisite ticket:
@@ -3344,7 +3344,7 @@ Do not use fake buttons, fake integrations, fake operational data, fake generate
 
 Review output must make the state of work understandable.
 
-It should state what happened, what was tried, what changed, what failed, what remains uncertain, and what smallest next step is needed.
+It should state what happened, what was tried, what changed, what failed, what remains uncertain, and what highest-leverage unblocker or follow-up action is needed.
 
 # Review Triggers
 
@@ -3389,7 +3389,7 @@ When available evidence supports it, identify:
 - related file or component
 - whether the failure appears related to scoped work
 - whether the failure appears unrelated or pre-existing
-- smallest useful next step
+- highest-leverage unblocker or follow-up action
 
 # Implementation Drift Handling
 
@@ -3442,7 +3442,7 @@ If blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, prerequisite, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 - suggest whether a new prerequisite or follow-up ticket is needed
 
 Do not silently work around blockers.
@@ -3614,7 +3614,7 @@ Handling:
 - State what was tried.
 - State whether the failure appears related to scoped work.
 - Mark the result blocked or partially complete.
-- Suggest the smallest useful next step.
+- Suggest the highest-leverage unblocker or follow-up action.
 ```
 
 ## Drift From Scope
@@ -3801,7 +3801,7 @@ Project initiation is the canonical ResolveOS entry point.
 
 When project access is available, users may start with `05-workflows/project-initiation.md`.
 
-Project initiation determines the appropriate operating model, roles, chats, context, source-of-truth structure, setup requirements, known gaps, and next actions.
+Project initiation determines the appropriate operating model, roles, chats, context, source-of-truth structure, setup requirements, known gaps, highest-leverage activity, and top recommended actions.
 
 Project initiation may be:
 
@@ -3869,8 +3869,10 @@ For an existing project, useful inputs include:
 - existing roles, chats, prompts, workflows, templates, or handoff files
 - current repository state where relevant
 - current objective, active ticket, active batch, running context, or handoff state when continuing existing work
+- current planning source, if one exists
 - candidate canonical repository, implementation location, tracker, and documentation source
 - known tracker, repository, documentation, metadata, database, or implementation inconsistencies
+- known assumptions, validation evidence, confidence, or validation status where these affect readiness
 
 If key inputs are missing, proceed with an explicit limitation only when the assessment can remain useful and read-only.
 
@@ -3925,18 +3927,23 @@ Use this mode when ResolveOS is already being applied to a project and the admin
 Assess:
 
 - current objective
+- highest-leverage activity
+- top recommended actions
 - current ticket, task, batch, or approved scope
 - last completed item
 - current running context or current-focus state
+- active work, backlog, blockers, and risks
 - latest handoff, completion report, blocker report, or decision log
 - latest completion evidence
 - latest decision evidence
+- latest validation evidence
 - source-system state
 - repository state where relevant
 - active role or role handoff
+- active, pending, superseded, or rejected decisions
 - open blockers, risks, dependencies, and decisions
 - stale or missing context
-- next recommended action
+- highest-leverage activity
 
 When repository access exists, read the relevant project context and source-of-truth files before relying on chat memory.
 
@@ -3986,12 +3993,92 @@ Continue-existing-project questions:
 - What is the current objective?
 - What was the last completed item?
 - What work is active now?
+- What is next?
 - What remains blocked, risky, unverified, or deferred?
 - What is the latest completion evidence?
 - What is the latest decision evidence?
+- What assumptions remain unvalidated, partially validated, proven, or disproven?
 - What role should continue the work?
 - What context is stale or missing?
 - What should not be repeated?
+
+# Project Planning State
+
+Project planning state answers:
+
+- What are we trying to achieve?
+- What are we doing now?
+- What comes next?
+- What is blocked?
+- What risks matter?
+
+Use these canonical planning concepts:
+
+| Concept | Meaning |
+| --- | --- |
+| Objective | The current plain-English outcome the project is trying to achieve. |
+| Highest-Leverage Activity | The single activity expected to create the greatest project progress, risk reduction, validation, learning, or delivery impact. |
+| Top 3 Recommended Actions | The next three practical actions, prioritised by evidence and usefulness. |
+| Active Work | Work currently approved, in progress, or being continued. |
+| Backlog | Known future work that is not active now. |
+| Blockers | Issues that prevent safe progress without more information, access, validation, prerequisite work, or a decision. |
+| Risks | Uncertain conditions that may affect delivery, validation, cost, scope, architecture, quality, or source-of-truth integrity. |
+
+Source-of-truth behaviour:
+
+- If Jira, Notion, GitHub Issues, Azure DevOps, or another planning system is declared authoritative, use that system for planning state.
+- If no planning system exists, support a lightweight project-owned planning model using the project's running context, current-focus file, plan, tracker, or equivalent source.
+- Do not create a competing ResolveOS roadmap, backlog, or task-management system.
+- Do not copy project-specific planning details into global ResolveOS files.
+- When planning sources conflict, surface the conflict and the owner decision needed before recommending implementation.
+
+The lightweight project-owned planning model should be enough to answer the four continuation questions above. It does not need to replicate external project-management tooling.
+
+# Decision State
+
+Use a lightweight decision lifecycle so project continuation can identify which decisions matter now.
+
+Canonical decision states:
+
+| State | Meaning |
+| --- | --- |
+| Proposed | A decision has been raised or recommended but is not yet accepted as governing work. |
+| Active | The decision currently governs behaviour, scope, architecture, source ownership, validation, or project direction. |
+| Superseded | The decision was previously active but has been replaced by a later decision. |
+| Rejected | The decision was considered and explicitly not adopted. |
+
+For ADRs that already use `Accepted`, treat `Accepted` as equivalent to `Active` unless a later ADR says otherwise.
+
+Continuation should identify:
+
+- active decisions that currently govern work
+- proposed decisions that need review before safe progress
+- superseded decisions that should not be followed as current guidance
+- rejected decisions that should not be reintroduced without new evidence
+
+Do not create extra decision bureaucracy. Use existing ADRs, project-owned decision records, source-system records, or the decision-log template where durable rationale needs to be preserved.
+
+# Evidence And Validation State
+
+Use lightweight validation concepts when readiness, continuation, product direction, commercial validation, or implementation validation depends on assumptions.
+
+Core concepts:
+
+| Concept | Meaning |
+| --- | --- |
+| Assumption | A claim, dependency, expected user behaviour, business rule, technical belief, or delivery condition that is not fully proven. |
+| Evidence | A source-backed observation, test result, research finding, customer signal, repository state, completion report, validation report, or authoritative source-system record. |
+| Confidence | The current strength of belief based on evidence: high, medium, low, or unknown. |
+| Validation Status | The current validation state: proven, partially validated, unvalidated, or disproven. |
+
+Validation statuses:
+
+- Proven: strong evidence supports the claim for the current project context.
+- Partially validated: some evidence supports the claim, but coverage, sample, environment, or scope is incomplete.
+- Unvalidated: the claim is plausible but lacks reliable evidence.
+- Disproven: evidence contradicts the claim or shows the expected result is false.
+
+Use this model to improve readiness assessment and continuation. Do not turn ResolveOS into a research tracker. Project-specific research plans, analytics, test commands, customer records, and acceptance artifacts remain project-owned.
 
 # Canonical Source Assessment
 
@@ -4003,13 +4090,16 @@ Explicitly identify:
 - canonical implementation location
 - canonical tracker
 - canonical documentation source
+- canonical planning source
+- canonical decision source
+- canonical validation evidence source
 
 Where multiple repositories, folders, databases, trackers, documents, or implementations exist, identify:
 
 - which source appears authoritative
 - which sources are stale, duplicate, incomplete, or contradictory
 - which source requires admin or project-owner confirmation
-- what inconsistencies affect the next action
+- what inconsistencies affect the highest-leverage activity
 
 Do not assume the nearest repository, loudest tracker, newest file, or most complete document is canonical.
 
@@ -4036,7 +4126,7 @@ For each readiness state, identify:
 - ready / partially ready / blocked / unknown
 - evidence
 - blockers
-- minimum next action
+- highest-leverage activity
 
 Do not treat project adoption, planning, implementation, or validation readiness as interchangeable.
 
@@ -4051,6 +4141,7 @@ Check for inconsistencies between:
 - documentation vs current source
 - completion report vs repository reality
 - decision record vs active project behaviour
+- validation status vs available evidence
 
 Surface differences explicitly.
 
@@ -4065,11 +4156,17 @@ Continuation requires evidence where possible.
 Before implementation begins in continue-existing-project mode, identify:
 
 - current objective
+- highest-leverage activity
+- top 3 recommended actions
 - last completed work
 - active work
+- backlog, if relevant
 - active blockers
+- active risks
 - latest completion evidence
 - latest decision evidence
+- latest validation evidence
+- active, proposed, superseded, or rejected decisions
 - latest running context
 
 If evidence is missing, mark it as missing rather than relying on chat memory.
@@ -4085,6 +4182,9 @@ Possible operating model elements:
 - canonical source ownership
 - project context ownership
 - source-system ownership
+- planning ownership
+- decision ownership
+- validation evidence ownership
 - role usage
 - chat/session structure
 - ticket or task flow
@@ -4153,6 +4253,7 @@ Assess:
 - product vision and strategy source
 - roadmap source
 - ticket/task source
+- planning state source
 - canonical repository
 - canonical implementation location
 - canonical tracker
@@ -4162,6 +4263,7 @@ Assess:
 - domain terminology source
 - feedback source
 - validation and QA evidence source
+- assumptions, confidence, and validation status source
 - completion and blocker reporting source
 - running context or current-focus source
 - external tools and integrations
@@ -4205,6 +4307,78 @@ For existing projects, preserve and reference existing context before proposing 
 
 Do not create context files as part of this workflow unless a separate approved task authorises file creation.
 
+# Project Snapshot Guidance
+
+Use a Project Snapshot when it adds orientation value.
+
+A Project Snapshot is a compact user-facing view of the current project state.
+
+Do not show a Project Snapshot on every message.
+
+Project Snapshot must be shown when:
+
+- a new conversation starts
+- a stale conversation is resumed
+- the user requests project status
+- project readiness materially changes
+- project objective materially changes
+- project source-of-truth changes
+- major risks or blockers materially change
+- project adoption occurs
+- project continuation requires reorientation
+
+Project Snapshot should not be shown for:
+
+- routine discussion
+- tactical questions
+- normal back-and-forth delivery conversations
+- small clarification questions
+
+Do not prepend a Project Snapshot to a full project initiation response.
+
+Project initiation already performs project classification, readiness assessment, team assembly, context establishment, and recommendations. Adding a Project Snapshot before the full initiation output duplicates the same orientation and makes ResolveOS feel process-heavy.
+
+A Project Snapshot should show:
+
+```text
+Project Detected:
+- New Project / Existing Project / Continue Existing Project
+
+Project Type:
+- SaaS / Business Process / GitHub Project / Notion Project / Jira Project / Idea / Other
+
+Current Readiness:
+- Adoption / Discovery / Planning / Implementation / Validation
+
+Current Objective:
+- One plain-English sentence
+
+Active Team:
+- Recommended ResolveOS roles
+- ResolveOS coordinates these automatically; the user does not need to choose roles.
+
+Open Risks:
+- Concise list
+
+Open Decisions:
+- Concise list, grouped as active or proposed when useful
+
+Missing Information:
+- Concise list
+
+Highest-Leverage Activity:
+- Single activity expected to create the greatest project progress, risk reduction, validation, learning, or delivery impact
+
+Top 3 Recommended Actions:
+- Prioritised, concrete, outcome-focused, practical, and time-bounded where possible
+```
+
+Keep the Project Snapshot user-facing and compact.
+
+Use role names only as the visible recommended team. Do not require the user to choose roles, workflows, modes, or internal files.
+
+If evidence is missing, show the missing information rather than delaying the whole response.
+
 # Gap Analysis
 
 Identify gaps without turning the workflow into implementation.
@@ -4240,7 +4414,7 @@ For each gap, state:
 - why it matters
 - who should own it
 - whether it blocks work
-- the smallest useful next step
+- the highest-leverage follow-up action
 
 # Steps
 
@@ -4255,49 +4429,13 @@ Classify the project as:
 
 If unclear, ask for the minimum clarification needed.
 
-## 2. Demonstrate ResolveOS Value In The First Response
+## 2. Orient The User When Orientation Adds Value
 
-For the first meaningful project interaction, produce a compact Project Control Panel before the full Project Setup Report or detailed recommendation.
+Use the Project Snapshot guidance when a snapshot trigger applies.
 
-This should happen automatically. The user should not need to ask for project classification, readiness assessment, role selection, source-state assessment, risks, decisions, missing information, or next actions.
+Do not automatically prepend a Project Snapshot to every first response or to a full Project Setup Report.
 
-The Project Control Panel should show:
-
-```text
-Project Detected:
-- New Project / Existing Project / Continue Existing Project
-
-Project Type:
-- SaaS / Business Process / GitHub Project / Notion Project / Jira Project / Idea / Other
-
-Current Readiness:
-- Adoption / Discovery / Planning / Implementation / Validation
-
-Current Objective:
-- One plain-English sentence
-
-Active Team:
-- Recommended ResolveOS roles
-- ResolveOS coordinates these automatically; the user does not need to choose roles.
-
-Open Risks:
-- Concise list
-
-Open Decisions:
-- Concise list
-
-Missing Information:
-- Concise list
-
-Recommended Next Action:
-- Smallest useful next step
-```
-
-Keep this first response user-facing and compact.
-
-Use role names only as the visible recommended team. Do not require the user to choose roles, workflows, modes, or internal files.
-
-If evidence is missing, show the missing information rather than delaying the whole response.
+The user should not need to ask for project classification, readiness assessment, role selection, source-state assessment, risks, decisions, missing information, highest-leverage activity, or recommended actions when those items are needed for orientation.
 
 ## 3. Gather Project Inputs
 
@@ -4375,11 +4513,23 @@ Produce a Project Setup Report using the output structure in this workflow.
 
 Do not implement setup unless a separate approved task authorises implementation.
 
-## 15. Recommend Next Action
+## 15. Recommend Highest-Leverage Activity And Top Actions
 
-Recommend the smallest useful next step.
+Recommend the single activity expected to create the greatest project progress, risk reduction, validation, learning, or delivery impact.
 
-If the next step requires project-specific files, source systems, external tools, or integrations, state that it requires approval.
+Also provide the Top 3 Recommended Actions when useful.
+
+Each recommended action should be:
+
+- concrete
+- outcome-focused
+- prioritised
+- practical
+- time-bounded where possible
+
+The goal is maximum useful progress, not minimum effort.
+
+If the highest-leverage activity or a recommended action requires project-specific files, source systems, external tools, or integrations, state that it requires approval.
 
 # Project Setup Report
 
@@ -4395,7 +4545,7 @@ Project mode:
 Project type:
 - [Type, if known]
 
-Project Control Panel:
+Project Snapshot:
 - Project Detected:
 - Project Type:
 - Current Readiness:
@@ -4404,7 +4554,8 @@ Project Control Panel:
 - Open Risks:
 - Open Decisions:
 - Missing Information:
-- Recommended Next Action:
+- Highest-Leverage Activity:
+- Top 3 Recommended Actions:
 
 Objective:
 - [Plain-English objective]
@@ -4446,14 +4597,40 @@ Initial running context:
 Continuation state:
 -
 
+Planning state:
+- Objective:
+- Highest-leverage activity:
+- Top 3 recommended actions:
+- Active work:
+- Backlog:
+- Blockers:
+- Risks:
+
 Continuation evidence:
 - Current objective:
+- Highest-leverage activity:
+- Top 3 recommended actions:
 - Last completed work:
 - Active work:
+- Backlog:
 - Active blockers:
+- Active risks:
 - Latest completion evidence:
 - Latest decision evidence:
+- Latest validation evidence:
+- Decisions by state:
+  - Active:
+  - Proposed:
+  - Superseded:
+  - Rejected:
+- Assumptions and validation state:
 - Latest running context:
+
+Source-of-truth behaviour:
+- Planning source:
+- Decision source:
+- Validation evidence source:
+- Conflicts or missing sources:
 
 Known gaps:
 -
@@ -4486,9 +4663,15 @@ Initial running context should capture:
 
 - current phase
 - current state
+- objective
+- highest-leverage activity
+- top recommended actions
 - active work
+- backlog, if relevant
 - open decisions
 - active risks
+- blockers
+- assumptions and validation state where relevant
 - current recommendations
 - source-of-truth references
 - what should not be repeated
@@ -4498,10 +4681,13 @@ For continue-existing-project mode, running context should also identify:
 - last reliable current-state source
 - what was just completed
 - what is still active
+- what comes next
 - what remains blocked or unverified
-- next recommended action
+- highest-leverage activity
 - latest completion evidence
 - latest decision evidence
+- latest validation evidence
+- active, proposed, superseded, and rejected decisions where relevant
 - readiness state where relevant
 
 Running context must remain current state only.
@@ -4546,7 +4732,7 @@ This workflow may produce:
 - recommended tools or integrations
 - known gaps
 - blockers
-- next actions
+- highest-leverage activity and top recommended actions
 - admin-review questions
 
 # Review Points
@@ -5015,7 +5201,7 @@ If blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, prerequisite, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 - suggest a prerequisite or follow-up ticket when needed
 
 Do not silently work around blockers.
@@ -5320,6 +5506,8 @@ Useful inputs include:
 
 The user does not need to prepare a perfect brief before starting.
 
+If a project already uses Jira, Notion, GitHub Issues, Azure DevOps, or another planning source, ResolveOS should use that source. If no planning source exists, ResolveOS can work from a lightweight project-owned current-focus, running-context, plan, or equivalent note.
+
 # Steps
 
 ## 1. Start With Plain English
@@ -5384,13 +5572,26 @@ It should decide whether the project needs:
 
 If ResolveOS cannot safely decide, it should ask a small number of plain-English questions.
 
-## 3. Expect A Project Control Panel
+## 3. Expect A Project Snapshot When It Helps
 
-After the first meaningful project message, ResolveOS should show a compact Project Control Panel before giving detailed advice.
+ResolveOS should show a compact Project Snapshot when orientation adds value.
 
-The user should not need to ask for classification, readiness, team selection, risks, decisions, missing information, or next actions.
+The user should not need to ask for classification, readiness, team selection, risks, decisions, missing information, highest-leverage activity, or recommended actions when those items are needed to understand the project state.
 
-ResolveOS should automatically present:
+A Project Snapshot is useful when:
+
+- a new conversation starts
+- a stale conversation is resumed
+- the user asks for project status
+- project readiness, objective, source of truth, risks, or blockers materially change
+- ResolveOS is adopting an existing project
+- continuation requires reorientation
+
+ResolveOS should not show a Project Snapshot for routine discussion, tactical questions, normal delivery back-and-forth, or small clarification questions.
+
+ResolveOS should not prepend a Project Snapshot to a full project initiation response because project initiation already includes classification, readiness, team, context, and recommendations.
+
+When shown, the Project Snapshot should present:
 
 ```text
 Project Detected:
@@ -5418,11 +5619,14 @@ Open Decisions:
 Missing Information:
 - Concise list
 
-Recommended Next Action:
-- Smallest useful next step
+Highest-Leverage Activity:
+- Single activity expected to create the greatest project progress, risk reduction, validation, learning, or delivery impact
+
+Top 3 Recommended Actions:
+- Prioritised, concrete, outcome-focused, practical, and time-bounded where possible
 ```
 
-Keep the Project Control Panel short.
+Keep the Project Snapshot short.
 
 Use plain English.
 
@@ -5437,16 +5641,19 @@ Use it when the user has an idea, goal, early plan, or blank project.
 ResolveOS should help identify:
 
 - what the project is trying to achieve
+- the current objective
+- the highest-leverage activity
+- the top recommended actions
 - who the project is for
 - what source systems are needed
 - what information should be captured first
 - what decisions are missing
-- what the smallest useful next step is
+- what activity would create the most useful progress
 
 Expected outcome:
 
 - a plain-English project setup direction
-- recommended next actions
+- top recommended actions
 - known gaps and questions
 - no unnecessary process or tool setup
 
@@ -5465,7 +5672,7 @@ It should identify:
 - what is stale, duplicated, contradictory, or missing
 - what should not be changed
 - what can be improved later
-- what the safest next action is
+- what action best reduces risk or unlocks progress
 
 Expected outcome:
 
@@ -5485,13 +5692,19 @@ ResolveOS should look for evidence before continuing.
 It should identify:
 
 - current objective
+- highest-leverage activity
+- top recommended actions
 - last completed work
 - active work
+- backlog, if relevant
 - active blockers
+- active risks
 - latest reliable context
 - latest completion evidence
 - latest decision evidence
-- next safe action
+- latest validation evidence
+- active, proposed, superseded, and rejected decisions where relevant
+- assumptions that are proven, partially validated, unvalidated, or disproven
 
 Expected outcome:
 
@@ -5510,13 +5723,14 @@ It should normally ask:
 - What source material is available?
 - Which source should be treated as authoritative?
 - What does the user want to achieve now?
+- What is active, next, blocked, risky, or still unvalidated?
 - What is missing or uncertain?
 - What should not be changed?
 - Is the project ready for discovery, planning, implementation, or validation?
 
-ResolveOS should prefer the smallest useful next step.
+ResolveOS should prefer the activity that creates the greatest project progress, risk reduction, validation, learning, or delivery impact.
 
-It should not add heavy process, create unnecessary files, invent facts, or assume every project needs the same setup.
+It should not confuse high leverage with heavy process, create unnecessary files, invent facts, or assume every project needs the same setup.
 
 # Outputs
 
@@ -5525,7 +5739,7 @@ ResolveOS may produce:
 - a project setup summary
 - an adoption summary
 - a continuation summary
-- recommended next actions
+- highest-leverage activity and top recommended actions
 - source-of-truth notes
 - questions for the user
 - a plan
@@ -5604,7 +5818,7 @@ Expected first outcome:
 - inspect available project context
 - identify current state and source-of-truth gaps
 - separate implementation readiness from validation readiness
-- recommend the next safe check
+- recommend the highest-leverage check
 
 ## Notion Workspace
 
@@ -5672,7 +5886,7 @@ Expected first outcome:
 - identify last reliable evidence
 - list completed, active, blocked, and uncertain work
 - avoid claiming unverified work is complete
-- recommend the smallest safe next action
+- recommend the highest-leverage continuation action
 
 # What This Workflow Must Not Do
 

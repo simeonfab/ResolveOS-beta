@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
-generated_date: 2026-06-17
+generated_date: 2026-06-19
 included_paths:
   - 01-context/context-loading-rules.md
   - 01-context/missing-context-behaviour.md
@@ -320,7 +320,7 @@ If blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 
 Do not silently work around blockers.
 
@@ -534,7 +534,7 @@ Missing-context handling may produce:
 - stale context note
 - limitation statement
 - traceability note
-- suggested smallest next step
+- suggested highest-leverage unblocker or follow-up action
 - suggested prerequisite or follow-up ticket for review
 
 Outputs should be plain, direct, and traceable.
@@ -574,7 +574,7 @@ Blocked:
 Why it matters:
 - The work depends on approved scope and acceptance criteria.
 
-Smallest next step:
+Highest-leverage unblocker:
 - Provide the ticket description and relevant comments, or approve a clearly limited draft.
 ```
 
@@ -1668,7 +1668,7 @@ related_governance:
   - 06-governance/project-readiness.md
 review_required: true
 last_reviewed: 2026-06-12
-last_updated: 2026-06-14
+last_updated: 2026-06-19
 max_staleness_days: 7
 ---
 
@@ -1707,6 +1707,8 @@ Project initiation is established as the canonical ResolveOS entry point for new
 
 The successful ResolveYGO adoption test validated project initiation and revealed practical improvements around readiness states, canonical project source identification, tracker/repository reconciliation, and evidence-backed continuation.
 
+Current refinement adds lightweight project-state management for planning state, decision lifecycle, and evidence/validation state without creating new roles, workflows, templates, or external project-management systems.
+
 Source references:
 
 - `migration/template-layer-review.md` > `Executive Summary`
@@ -1727,7 +1729,8 @@ ResolveOS currently has draft foundations for:
 - completion report, blocker report, ticket context, briefing, role prompt, decision log, and chat handoff templates
 - update-process and duplication-control governance
 - project-readiness governance
-- architecture decisions through ADR-056
+- project-state refinements for planning persistence, decision lifecycle, and validation state
+- architecture decisions through ADR-059
 
 ResolveOS remains draft migration guidance until admin review changes file status.
 
@@ -1767,12 +1770,13 @@ The template review found no high-priority template rewrite requirement and warn
 
 # Current Validation Findings
 
-Validation findings from the successful ResolveYGO adoption test:
+Validation findings from the successful ResolveYGO adoption test and later project-state refinement:
 
 - Project initiation is validated as the canonical ResolveOS entry point.
 - Architecture Review #3 is complete and found ResolveOS functionally complete at draft level.
 - Validation-driven improvements are needed for readiness states, canonical project source assessment, reconciliation between tracker state and repository reality, and evidence-backed continuation.
-- These refinements should improve adoption reliability without creating new roles, workflows, or templates.
+- Final core refinements define planning ownership, decision states, and validation state so continuation can identify objective, active work, next actions, blockers, decisions, evidence, and validation gaps.
+- These refinements should improve adoption reliability without creating new roles, workflows, templates, duplicate planning systems, duplicate decision systems, or duplicate validation systems.
 
 Source references:
 
@@ -1782,17 +1786,20 @@ Source references:
 
 # Active Work
 
-Active work: Batch 7.0 applies validation refinements from the ResolveYGO adoption test.
+Active work: final core project-state management refinement.
 
-This batch covers:
+This refinement covers:
 
 - `06-governance/project-readiness.md`
 
-This batch updates:
+This refinement updates:
 
 - `05-workflows/project-initiation.md`
 - `06-governance/architecture-decisions.md`
 - `01-context/running-context.md`
+- `06-governance/source-of-truth-rules.md`
+- `05-workflows/user-guide.md`
+- `04-templates/decision-log-template.md`
 
 Do not create additional workflows, templates, roles, skills, or ResolvePM changes as part of this batch.
 
@@ -1806,7 +1813,7 @@ Source references:
 
 Open decisions that matter now:
 
-- Whether the next migration batch should create a source-tracker handoff/comment template or move to high-evidence skill extraction.
+- Whether real-world project use shows that source-tracker handoff/comment structure is needed, or whether project-owned source systems are enough.
 - Whether source-tracker blocker, completion, or decision comments should be mandatory when source-system access exists or remain project-owned.
 - Whether completion reports need a `Files Removed` section.
 - Whether briefing templates need stricter freshness or `last reviewed` metadata.
@@ -1839,6 +1846,7 @@ Active risks:
 - Project initiation could become overloaded if future batches add bootstrap-file creation, external-tool creation, or project doctrine to the canonical entrypoint.
 - Readiness language could become too heavy if applied to low-risk casual conversations.
 - Canonical-source and reconciliation checks could accidentally absorb project-specific tracker fields or repository conventions if not kept source-owned.
+- Planning, decision, and validation state could become too heavy if future work tries to recreate Jira, Notion, Azure DevOps, Trello, GitHub Issues, or research-management tools.
 
 Source references:
 
@@ -1862,10 +1870,14 @@ Recommended handling:
 - Use `05-workflows/project-initiation.md` as the preferred ResolveOS starting point when project access is available.
 - Treat governance stabilisation as complete enough at draft level for careful continuation.
 - Treat project initiation as the entry point for new project initiation, existing project adoption, and continuing existing projects.
-- Use `06-governance/project-readiness.md` when adoption, discovery, planning, implementation, or validation readiness affects the next action.
+- Use `06-governance/project-readiness.md` when adoption, discovery, planning, implementation, or validation readiness affects the highest-leverage activity.
 - Treat readiness states independently; one readiness state does not imply another.
 - During project initiation, identify canonical project sources and surface tracker/repository, plan/implementation, metadata/state, and repository/external-implementation inconsistencies.
 - During continuation, prefer evidence from running context, completion reports, blocker reports, decision records, repository state, and source systems over chat memory.
+- Use declared external planning systems when they exist.
+- If no planning source exists, use a lightweight project-owned planning model that can answer objective, highest-leverage activity, top recommended actions, active work, backlog, blockers, and risks.
+- Treat decision states as Proposed, Active, Superseded, or Rejected; existing accepted ADRs are active unless later superseded.
+- Track assumptions, evidence, confidence, and validation status only as much as needed to support readiness, continuation, commercial validation, product validation, or implementation validation.
 - Current focus is validation-driven refinement and careful review of residual high-evidence capabilities before ResolvePM cleanup.
 - For the next batch, prefer source-tracker handoff/comment, debugging-support, AI workflow design, or other high-evidence residual extraction only if admin approves the scope.
 
@@ -1890,6 +1902,7 @@ Do not repeat these mistakes:
 - Do not create alternative ResolveOS entrypoint workflows while project initiation owns entrypoint behaviour.
 - Do not treat adoption readiness, discovery readiness, planning readiness, implementation readiness, and validation readiness as the same thing.
 - Do not silently ignore differences between tracker state and repository reality.
+- Do not create duplicate planning, decision, or validation systems when a project source of truth already exists.
 - Do not refactor ResolvePM before ResolveOS review and cleanup planning are approved.
 - Do not renumber ADR-039, ADR-040, or ADR-041 solely for neatness.
 - Do not make project-specific commands, ticket keys, provider names, routes, deployment targets, roadmap terms, or product doctrine global.
@@ -1910,6 +1923,9 @@ Use these canonical homes:
 - Historical architecture decisions: `06-governance/architecture-decisions.md`
 - Source ownership and conflict rules: `06-governance/source-of-truth-rules.md`
 - Project readiness assessment: `06-governance/project-readiness.md`
+- Planning state model and continuation output: `05-workflows/project-initiation.md`
+- Decision lifecycle: `05-workflows/project-initiation.md`, `04-templates/decision-log-template.md`, and `06-governance/architecture-decisions.md`
+- Evidence and validation state: `06-governance/project-readiness.md` and `05-workflows/project-initiation.md`
 - Update ownership and propagation rules: `06-governance/update-process.md`
 - Duplication control: `06-governance/duplication-control.md`
 - Context loading and missing context behaviour: `01-context/context-loading-rules.md` and `01-context/missing-context-behaviour.md`
@@ -1923,13 +1939,13 @@ Use these canonical homes:
 
 Last reviewed: 2026-06-12.
 
-Last updated: 2026-06-14.
+Last updated: 2026-06-19.
 
 Maximum staleness: 7 days.
 
 Status: draft.
 
-Created during Batch 4D.1 and updated during Batch 5.1, Batch 6.1, and Batch 7.0. Requires admin review before becoming active.
+Created during Batch 4D.1 and updated during Batch 5.1, Batch 6.1, Batch 7.0, and final core project-state management refinement. Requires admin review before becoming active.
 
 # Usage Guidance
 
