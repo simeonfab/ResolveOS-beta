@@ -45,7 +45,7 @@ After upload, tell testers to read `START_HERE.md` first.
 Set the ChatGPT Project instructions to:
 
 ```text
-Always begin by loading and following 00-system/resolveos-entrypoint.md. Do not bypass it. If required context is missing, state what is missing and stop.
+Always begin by loading and following 00-system/resolveos-entrypoint.md. Do not bypass it. If required context is missing, follow the entrypoint's missing-context response rules.
 ```
 
 ## Canonical Source

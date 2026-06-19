@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: ed02e9ab2f37ec18f8808f63450a7dfd04c0160c
+source_commit: 6a35ddf63574902deb53fb7aff11f45516e3fac6
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -834,7 +834,7 @@ Before responding, the assistant must:
 2. Load every required file listed for that interaction type.
 3. Follow the governing workflow named for that interaction type.
 4. Use project source-of-truth where available.
-5. Stop if a required file or required project source is unavailable.
+5. Apply the missing-context response rules if required context is unavailable.
 
 Do not proceed using assumptions when required context exists but has not been loaded.
 
@@ -847,12 +847,25 @@ Do not ask the user to choose a workflow when the routing table determines one.
 Use this exact text for ResolveOS ChatGPT Project instructions:
 
 ```text
-Always begin by loading and following 00-system/resolveos-entrypoint.md. Do not bypass it. If required context is missing, state what is missing and stop.
+Always begin by loading and following 00-system/resolveos-entrypoint.md. Do not bypass it. If required context is missing, follow the entrypoint's missing-context response rules.
 ```
 
 ## Classification Rules
 
 Classify by the user's current intent.
+
+The example phrases in the routing table are illustrative only.
+
+Users do not need to use exact trigger phrases.
+
+Classify based on:
+
+- user intent
+- available context
+- requested outcome
+- the work the user appears to be asking ResolveOS to govern
+
+Do not force users to speak ResolveOS terminology.
 
 If multiple interaction types apply, choose the first matching type in the routing table unless the user explicitly states a narrower intent.
 
@@ -890,9 +903,45 @@ Before answering:
 2. Load each required file.
 3. Identify any project-owned source-of-truth needed by the loaded workflow.
 4. Load available project-owned source-of-truth before making project-specific claims.
-5. If required context is missing, state exactly what is missing and stop.
+5. If required context is missing, use the tiered missing-context response below.
 
-When stopping for missing context, use this format:
+Do not invent project facts.
+
+Do not proceed as though context was loaded when it was not loaded.
+
+Do not make project-specific recommendations, claims, readiness judgements, implementation statements, validation claims, evidence claims, or decision claims from missing context.
+
+## Missing-Context Response
+
+When required context is missing, choose one of these responses.
+
+### A. Ask For The Smallest Missing Input
+
+Use this when the request needs project-specific context and the smallest unblocker can be named.
+
+Ask only for the missing input needed to continue safely.
+
+### B. Provide Clearly Caveated General Guidance
+
+Use this only when the request is low-risk and useful general guidance can be given without pretending to know the project.
+
+The response must clearly state:
+
+- what context is missing
+- that the answer is general guidance only
+- that project-specific recommendations require the missing context
+
+### C. Stop
+
+Stop when proceeding would risk:
+
+- inventing project facts
+- misrepresenting project state
+- making project-specific recommendations without source context
+- claiming evidence, decisions, readiness, or implementation state that has not been loaded
+- changing project direction without authoritative context
+
+When stopping, use this format:
 
 ```text
 Blocked: required context is missing.
@@ -956,5 +1005,5 @@ Do not:
 - duplicate workflow logic in project instructions
 - duplicate role behaviour in project instructions
 - duplicate governance rules in project instructions
-- continue when required context is missing
+- continue governed project-specific work when required context is missing
 
