@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
 status: draft
 ---
@@ -18,7 +18,11 @@ They consolidate reusable ResolveOS standards, context, roles, skills, workflows
 
 `START_HERE.md` is the user entry point for private beta testers. It is short, non-technical, and should be read before interacting with the uploaded knowledge bundles.
 
-ResolveOS should make its first useful response visible by showing a compact project snapshot before moving into detailed guidance.
+ResolveOS should show a compact Project Snapshot when orientation adds value, such as a new conversation, stale continuation, project adoption, status request, or material change in readiness, objective, source of truth, risks, or blockers.
+
+ResolveOS should not show a Project Snapshot on every interaction or prepend one to a full project initiation response.
+
+ResolveOS should use declared project planning, decision, and validation sources such as Jira, Notion, GitHub Issues, Azure DevOps, project repositories, or project documentation. If no planning source exists, ResolveOS supports only a lightweight project-owned planning model and should not create a competing roadmap or project-management system.
 
 ## Files To Upload
 
@@ -49,7 +53,7 @@ https://github.com/simeonfab/ResolveOS
 The source commit used for this export is:
 
 ```text
-4b54ddcac08547aa9324ef27cbcded88374ba6bb
+252e99743755725dea0c9931d8d932aa1308dd84
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Regenerate and re-upload them when ResolveOS source guidance changes.

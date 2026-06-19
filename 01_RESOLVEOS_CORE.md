@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
-generated_date: 2026-06-17
+generated_date: 2026-06-19
 included_paths:
   - 00-system/ai-operating-principles.md
   - 00-system/file-metadata-standard.md
@@ -213,7 +213,7 @@ If blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 
 Do not work around security, architecture, source-of-truth, or context requirements just to continue.
 

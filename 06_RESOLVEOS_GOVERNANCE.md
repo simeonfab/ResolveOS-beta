@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 4b54ddcac08547aa9324ef27cbcded88374ba6bb
+source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
 generated: true
-generated_date: 2026-06-17
+generated_date: 2026-06-19
 included_paths:
   - 06-governance/architecture-decisions.md
   - 06-governance/codex-working-rules.md
@@ -762,7 +762,7 @@ Product Manager and admin authority remains required where a defect ticket affec
 
 QA Testers may create defect tickets when validation evidence supports the defect.
 
-Defect tickets should preserve expected result, actual result, reproduction context where available, affected scope or acceptance criteria, blocker status, and recommended next step.
+Defect tickets should preserve expected result, actual result, reproduction context where available, affected scope or acceptance criteria, blocker status, and highest-leverage follow-up action.
 
 QA defect ticket creation must not be represented as product approval, roadmap approval, prioritisation approval, implementation approval, or final acceptance.
 
@@ -1314,7 +1314,7 @@ Blocker reports must support both technical validation and non-technical review.
 
 ResolvePM repeatedly preserves stop-and-explain behaviour for blockers, missing context, failed validation, dependency issues, contradictory information, technical uncertainty, and escalation decisions.
 
-Existing ResolveOS context, workflow, skill, and governance files already define the behaviour: stop when progress is unsafe, explain the blocker clearly, do not silently work around it, preserve uncertainty, state the missing information or decision, and suggest the smallest safe next step.
+Existing ResolveOS context, workflow, skill, and governance files already define the behaviour: stop when progress is unsafe, explain the blocker clearly, do not silently work around it, preserve uncertainty, state the missing information or decision, and suggest the highest-leverage unblocker or follow-up action.
 
 The blocker report template should make that behaviour reviewable without redefining it.
 
@@ -2125,9 +2125,138 @@ Source references:
 - `04-templates/chat-handoff-template.md`
 - ResolveYGO adoption validation findings
 
+# ADR-057: Planning State Is Project-Owned And Source-System-Aware
+
+## Status
+
+Accepted for draft migration.
+
+## Decision
+
+ResolveOS defines lightweight planning concepts but does not own project planning state.
+
+Canonical planning concepts are:
+
+- Objective
+- Highest-Leverage Activity
+- Top 3 Recommended Actions
+- Active Work
+- Backlog
+- Blockers
+- Risks
+
+If Jira, Notion, GitHub Issues, Azure DevOps, or another planning system is declared authoritative, ResolveOS must use that source.
+
+If no planning source exists, ResolveOS may support a lightweight project-owned planning model through a project current-focus, running-context, plan, tracker, or equivalent source.
+
+ResolveOS must not create a competing roadmap, backlog, or project-management system.
+
+## Rationale
+
+ResolveOS needs enough planning persistence to answer what the project is trying to achieve, what is being worked on, what comes next, and what is blocked. It does not need to recreate external planning tools or move project-specific state into global ResolveOS guidance.
+
+Source-system-aware planning preserves source-of-truth ownership while giving continuation a small stable vocabulary.
+
+## Impact
+
+`05-workflows/project-initiation.md` defines planning state and continuation output.
+
+`06-governance/source-of-truth-rules.md` keeps project planning state project-owned and requires declared external planning systems to be used when they exist.
+
+Project-specific planning fields, tracker statuses, roadmaps, ticket keys, and workflow conventions remain project-owned.
+
+Source references:
+
+- `05-workflows/project-initiation.md`
+- `06-governance/source-of-truth-rules.md`
+- `01-context/running-context.md`
+
+# ADR-058: Decisions Use A Lightweight Lifecycle
+
+## Status
+
+Accepted for draft migration.
+
+## Decision
+
+ResolveOS decisions use a lightweight lifecycle:
+
+- Proposed
+- Active
+- Superseded
+- Rejected
+
+Existing ADRs that use `Accepted` should be treated as `Active` unless a later ADR or decision record supersedes or rejects them.
+
+Project continuation should identify active, proposed, superseded, and rejected decisions where decision state affects safe progress.
+
+## Rationale
+
+ResolveOS already has ADRs and a decision-log template, but continuation needs a consistent way to distinguish governing decisions from pending, replaced, or rejected decisions.
+
+A small lifecycle improves continuity without adding approval bureaucracy or replacing project-owned decision systems.
+
+## Impact
+
+`05-workflows/project-initiation.md` defines the lifecycle and continuation behaviour.
+
+`04-templates/decision-log-template.md` uses the shared decision states for durable non-ADR decision records.
+
+Architecture decisions remain in `06-governance/architecture-decisions.md`; project-specific decisions remain project-owned.
+
+Source references:
+
+- `05-workflows/project-initiation.md`
+- `04-templates/decision-log-template.md`
+- `06-governance/architecture-decisions.md`
+
+# ADR-059: Validation State Uses Assumptions, Evidence, Confidence, And Status
+
+## Status
+
+Accepted for draft migration.
+
+## Decision
+
+ResolveOS uses a lightweight validation model when readiness, continuation, product direction, commercial validation, or implementation validation depends on assumptions.
+
+Core concepts are:
+
+- Assumption
+- Evidence
+- Confidence
+- Validation Status
+
+Validation statuses are:
+
+- Proven
+- Partially validated
+- Unvalidated
+- Disproven
+
+## Rationale
+
+ResolveOS can identify assumptions and risks, but readiness and continuation need a consistent way to show what is proven, partially validated, unvalidated, or disproven.
+
+The model improves validation honesty without creating a research-management system.
+
+## Impact
+
+`06-governance/project-readiness.md` defines the validation state model.
+
+`05-workflows/project-initiation.md` uses validation state for planning, continuation, and Project Setup Reports.
+
+Project-specific research plans, analytics, customer records, test commands, acceptance evidence, and validation artifacts remain project-owned.
+
+Source references:
+
+- `06-governance/project-readiness.md`
+- `05-workflows/project-initiation.md`
+- `06-governance/source-of-truth-rules.md`
+
 # Enforcement
 
-When future ResolveOS files touch global dependency structure, dependency management, requirement traceability, implementation review, project readiness, canonical project source assessment, tracker/repository reconciliation, evidence-backed continuation, canonical project entrypoint behaviour, role/skill separation, context loading, running context, running-context freshness, chat handoffs, project initiation, update process, duplication control, decision-log templates, missing-context behaviour, project-loading rules, low-risk read-only analysis, metadata, global/project ownership, assistant operating principles, startup context, role-loading rules, role prompt structure, workflow extraction order, workflow ownership, ticket-to-implementation sequence, implementation-review-loop behaviour, feedback-to-ticket transition, template ownership, approved batch mode, previous-ticket inspection, general workflow applicability, Codex execution constraints, no-fake-functionality, cost-safe AI/API behaviour, acceptance-criteria format, ticket context, briefing context, completion reporting, blocker reporting, single-handoff communication, project verification commands, dependency ordering, feedback schema, default message classification, prioritisation filters, Product Manager ticket authority, Product Manager role boundary, Business Analyst ticket authority, QA Tester defect ticket authority, QA role taxonomy, Technical Strategy Lead technical ticket authority, Implementation Engineer ticket proposal authority, low-risk scope clarification, documentation hygiene ownership, or decision-maker reporting, they must follow ADR-001 through ADR-056 unless admin explicitly changes these decisions.
+When future ResolveOS files touch global dependency structure, dependency management, requirement traceability, implementation review, project readiness, canonical project source assessment, tracker/repository reconciliation, evidence-backed continuation, project planning state, decision lifecycle, validation state, canonical project entrypoint behaviour, role/skill separation, context loading, running context, running-context freshness, chat handoffs, project initiation, update process, duplication control, decision-log templates, missing-context behaviour, project-loading rules, low-risk read-only analysis, metadata, global/project ownership, assistant operating principles, startup context, role-loading rules, role prompt structure, workflow extraction order, workflow ownership, ticket-to-implementation sequence, implementation-review-loop behaviour, feedback-to-ticket transition, template ownership, approved batch mode, previous-ticket inspection, general workflow applicability, Codex execution constraints, no-fake-functionality, cost-safe AI/API behaviour, acceptance-criteria format, ticket context, briefing context, completion reporting, blocker reporting, single-handoff communication, project verification commands, dependency ordering, feedback schema, default message classification, prioritisation filters, Product Manager ticket authority, Product Manager role boundary, Business Analyst ticket authority, QA Tester defect ticket authority, QA role taxonomy, Technical Strategy Lead technical ticket authority, Implementation Engineer ticket proposal authority, low-risk scope clarification, documentation hygiene ownership, or decision-maker reporting, they must follow ADR-001 through ADR-059 unless admin explicitly changes these decisions.
 
 # Exceptions
 
@@ -2214,6 +2343,8 @@ ADR-049 through ADR-051 were added from the Batch 6.1 instruction.
 ADR-052 was added from the Batch 6.1 project initiation refinement instruction.
 
 ADR-053 through ADR-056 were added from the Batch 7.0 ResolveYGO adoption validation refinement instruction.
+
+ADR-057 through ADR-059 were added from the final core project-state management refinement instruction.
 
 ---
 
@@ -2363,7 +2494,7 @@ If blocked:
 - explain the blocker clearly
 - explain why continuing would be unsafe or unsupported
 - state what information, credential, config, source file, or admin decision is needed
-- suggest the smallest useful next step
+- suggest the highest-leverage unblocker or follow-up action
 
 Do not silently work around blockers.
 
@@ -2478,7 +2609,7 @@ Blocked:
 Why it matters:
 - The requested change depends on project-specific rules that ResolveOS should not infer from memory.
 
-Smallest next step:
+Highest-leverage unblocker:
 - Provide the missing context file or approve proceeding with that limitation.
 ```
 
@@ -2740,7 +2871,7 @@ Preserved source concepts:
 - suggested follow-up tickets
 - suggested documentation updates
 - next recommended ticket
-- smallest useful next step
+- highest-leverage follow-up action
 - admin-review question
 
 ## 6. Evidence Layer
@@ -3352,6 +3483,30 @@ Readiness assessment should identify:
 - minimum conditions
 - anti-patterns
 
+# Validation State Model
+
+Use a lightweight validation state model when assumptions, evidence, confidence, or validation status affect readiness.
+
+Core concepts:
+
+- Assumption: a claim, dependency, expectation, user need, business rule, technical belief, or delivery condition that is not yet fully proven.
+- Evidence: a source-backed observation, test result, research finding, customer signal, repository state, completion report, validation report, or authoritative source-system record that supports or weakens an assumption.
+- Confidence: the current strength of belief based on available evidence, stated as high, medium, low, or unknown.
+- Validation status: proven, partially validated, unvalidated, or disproven.
+
+Validation statuses mean:
+
+| Status | Meaning |
+| --- | --- |
+| Proven | Strong evidence supports the claim for the current project context. |
+| Partially validated | Some evidence supports the claim, but scope, sample size, environment, or acceptance coverage is incomplete. |
+| Unvalidated | The claim may be plausible, but source-backed evidence is missing or too weak to rely on. |
+| Disproven | Evidence contradicts the claim or shows the expected result is false in the current context. |
+
+Use this model to improve readiness assessment, commercial validation, product validation, implementation validation, and project continuation.
+
+Do not turn validation state into a research-management system. Keep exact research plans, customer interviews, analytics, test commands, tracker fields, and acceptance records project-owned.
+
 # Adoption Readiness
 
 ## Purpose
@@ -3431,7 +3586,7 @@ Determine whether enough context exists to investigate, classify, and understand
 
 ## Purpose
 
-Determine whether the project has enough source-backed context to recommend roles, chats, context, source-of-truth structure, gaps, and next actions.
+Determine whether the project has enough source-backed context to recommend roles, chats, context, source-of-truth structure, gaps, highest-leverage activity, and top recommended actions.
 
 ## Required Evidence
 
@@ -3443,6 +3598,7 @@ Determine whether the project has enough source-backed context to recommend role
 - active work or intended next work
 - known risks and blockers
 - relevant decisions or decision gaps
+- validation state for assumptions that materially affect the next recommendation
 
 ## Common Blockers
 
@@ -3454,7 +3610,7 @@ Determine whether the project has enough source-backed context to recommend role
 
 ## Minimum Conditions
 
-- The next recommended action can be stated with evidence.
+- The highest-leverage activity can be stated with evidence.
 - Missing context is identified rather than guessed.
 - Project-specific facts remain project-owned.
 - Recommendations can be reviewed by the admin or source owner.
@@ -3523,6 +3679,8 @@ Determine whether delivered work can be checked, reviewed, or accepted with enou
 - repository state or delivered artifact
 - completion report, if work was already performed
 - known failed, skipped, blocked, or not-run checks
+- assumptions being validated
+- evidence and confidence for the validation result
 
 ## Common Blockers
 
@@ -3549,7 +3707,7 @@ Determine whether delivered work can be checked, reviewed, or accepted with enou
 
 # Enforcement
 
-Project initiation, continuation, implementation planning, and validation work should state the relevant readiness state when readiness affects the next action.
+Project initiation, continuation, implementation planning, and validation work should state the relevant readiness state when readiness affects the highest-leverage activity.
 
 If readiness is partial, blocked, or unknown, report the blocker or uncertainty clearly.
 
@@ -3647,8 +3805,10 @@ Project repositories are the source of truth for:
 - Product vision.
 - Product strategy.
 - Roadmaps.
+- Planning state, including objectives, active work, backlog, blockers, risks, and next actions.
 - Project decisions.
 - Active tickets.
+- Validation evidence, assumptions, confidence, and project-specific acceptance state.
 - Domain-specific terminology.
 - Project-specific workflows.
 - Feature design.
@@ -3748,6 +3908,10 @@ Content may move from ResolvePM into ResolveOS only if:
 Projects should consume ResolveOS.
 
 Projects should not permanently fork ResolveOS rules unless they require project-specific overrides.
+
+If a project declares Jira, Notion, GitHub Issues, Azure DevOps, or another external system as the planning, decision, ticket, or validation source of truth, ResolveOS should use that source instead of creating a competing project-owned planning or validation record.
+
+If no external planning source exists, the project may use a lightweight project-owned current-focus, running-context, plan, or equivalent file. That file belongs to the project, not ResolveOS.
 
 When an override exists:
 

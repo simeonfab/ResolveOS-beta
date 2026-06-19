@@ -37,8 +37,10 @@ You can provide:
 
 ResolveOS should identify whether your project is new, existing, or already in progress.
 
-It should first create a visible project snapshot so you can see the project type, readiness, active team, risks, missing information, and next action.
+It should create a visible Project Snapshot when orientation helps, such as a new conversation, stale continuation, status request, project adoption, or material change in readiness, objective, source of truth, risks, or blockers.
 
-Then it should ask only for missing essentials and recommend the smallest useful next step.
+Then it should ask only for missing essentials and recommend the highest-leverage activity plus practical top actions.
+
+If your project already uses Jira, Notion, GitHub Issues, Azure DevOps, or another planning source, ResolveOS should use that source. If no planning source exists, ResolveOS can work from a lightweight project-owned current-focus, running-context, plan, or equivalent note.
 
 You do not need to understand ResolveOS internals before you begin.
