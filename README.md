@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 252e99743755725dea0c9931d8d932aa1308dd84
+source_commit: ed02e9ab2f37ec18f8808f63450a7dfd04c0160c
 generated: true
 status: draft
 ---
@@ -40,6 +40,14 @@ Do not upload `generate-resolveos-bundles.ps1`; it is the local regeneration scr
 
 After upload, tell testers to read `START_HERE.md` first.
 
+## Project Instructions
+
+Set the ChatGPT Project instructions to:
+
+```text
+Always begin by loading and following 00-system/resolveos-entrypoint.md. Do not bypass it. If required context is missing, state what is missing and stop.
+```
+
 ## Canonical Source
 
 These bundles are generated snapshots.
@@ -53,7 +61,7 @@ https://github.com/simeonfab/ResolveOS
 The source commit used for this export is:
 
 ```text
-252e99743755725dea0c9931d8d932aa1308dd84
+ed02e9ab2f37ec18f8808f63450a7dfd04c0160c
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Regenerate and re-upload them when ResolveOS source guidance changes.
