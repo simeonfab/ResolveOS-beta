@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
+source_commit: 3262ea07850e86617bc0b53ff855516fff2d5926
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -3801,7 +3801,7 @@ Project initiation is the governing ResolveOS workflow for new project initiatio
 
 `00-system/resolveos-entrypoint.md` is the canonical ResolveOS AI entrypoint.
 
-When project access is available, users may start with `05-workflows/project-initiation.md`.
+Users should start from `README.md`. ResolveOS AI interactions should start from `00-system/resolveos-entrypoint.md`, which routes new project initiation, existing project adoption, and existing project continuation to this workflow when appropriate.
 
 Project initiation determines the appropriate operating model, roles, chats, context, source-of-truth structure, setup requirements, known gaps, highest-leverage activity, and top recommended actions.
 

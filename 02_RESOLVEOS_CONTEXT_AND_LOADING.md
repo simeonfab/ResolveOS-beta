@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
+source_commit: 3262ea07850e86617bc0b53ff855516fff2d5926
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -1869,7 +1869,8 @@ Recommended handling:
 - Use ADRs for historical decisions.
 - Use migration reviews and audit reports for historical migration findings.
 - Use project repositories for project-specific current focus, ticket state, roadmap, architecture, commands, and source-system details.
-- Use `05-workflows/project-initiation.md` as the preferred ResolveOS starting point when project access is available.
+- Use `README.md` as the human entrypoint and `00-system/resolveos-entrypoint.md` as the AI entrypoint.
+- Use `05-workflows/project-initiation.md` as the governing workflow for new project initiation, existing project adoption, and existing project continuation when project access is available.
 - Treat governance stabilisation as complete enough at draft level for careful continuation.
 - Treat `00-system/resolveos-entrypoint.md` as the AI entrypoint and project initiation as the governing workflow for new project initiation, existing project adoption, and continuing existing projects.
 - Use `06-governance/project-readiness.md` when adoption, discovery, planning, implementation, or validation readiness affects the highest-leverage activity.
