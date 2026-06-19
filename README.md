@@ -56,6 +56,14 @@ I want to use ResolveOS for this project. Here is what I have and what I want he
 
 ResolveOS should identify whether your project is new, existing, or already in progress. It should ask only for missing essentials and recommend the highest-leverage activity plus practical next actions.
 
+## Example Things You Can Ask
+
+- New project: "I have an idea for a project and want help turning it into a clear plan."
+- Existing project adoption: "Here is my GitHub repo / Notion workspace / Jira project. Help me understand what exists and what should happen next."
+- Existing project continuation: "Continue this project and tell me where we are, what is blocked, and what the highest-leverage activity is."
+- Status: "Where are we with this project?"
+- Planning: "Help me prioritise the roadmap and decide what to do next."
+
 ## Quick Test
 
 Create a new chat and enter:
