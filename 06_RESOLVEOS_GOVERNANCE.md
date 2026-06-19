@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 747d2d2ab4456ddc7a55063875241c0d2d75d3a5
+source_commit: d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -1799,7 +1799,7 @@ Project initiation must not overwrite existing project state without explicit ap
 
 ## Rationale
 
-ResolveOS is intended to be reusable across projects. Applying it safely requires a structured entry point that distinguishes a new project from an existing project, preserves project-owned source systems, and recommends only the roles, chats, context, tools, and operating model that fit the project.
+ResolveOS is intended to be reusable across projects. Applying it safely requires a structured AI entrypoint that distinguishes a new project from an existing project, preserves project-owned source systems, and recommends only the roles, chats, context, tools, and operating model that fit the project.
 
 Existing ResolveOS governance already separates global behaviour from project-specific doctrine. Project initiation turns that separation into a practical workflow before implementation, ticketing, adoption, or cleanup work begins.
 
@@ -1942,7 +1942,9 @@ Accepted for draft migration.
 
 ## Decision
 
-Project initiation is the canonical ResolveOS entry point.
+Project initiation is the governing ResolveOS workflow for new project initiation, existing project adoption, and existing project continuation.
+
+`00-system/resolveos-entrypoint.md` is the canonical ResolveOS AI entrypoint.
 
 Project initiation supports:
 
@@ -1958,13 +1960,15 @@ Project initiation recommends structure, roles, chats, context, source-of-truth 
 
 ResolveOS now has enough draft context, role, skill, workflow, template, and governance coverage that projects need a single starting workflow rather than scattered setup instructions.
 
-Existing ResolveOS governance already requires project-owned source systems, role boundaries, context loading, update ownership, and duplication control. Project initiation provides the practical entry point for applying those rules to new projects, adopting existing projects, or safely continuing existing work after a pause, handoff, or chat change.
+Existing ResolveOS governance already requires project-owned source systems, role boundaries, context loading, update ownership, and duplication control. Project initiation provides the governing workflow for applying those rules to new projects, adopting existing projects, or safely continuing existing work after a pause, handoff, or chat change.
 
 ## Impact
 
-`05-workflows/project-initiation.md` is the canonical ResolveOS entrypoint workflow when project access is available.
+`00-system/resolveos-entrypoint.md` is the canonical ResolveOS AI entrypoint.
 
-Project initiation should not create bootstrap files, external systems, alternative entrypoint workflows, roles, skills, templates, or project files without explicit approved scope.
+`05-workflows/project-initiation.md` is the governing project-initiation workflow when project access is available.
+
+Project initiation should not create bootstrap files, external systems, alternative AI entrypoints, duplicate project-initiation workflows, roles, skills, templates, or project files without explicit approved scope.
 
 Project initiation must preserve existing project state and should not overwrite project structures without explicit approval.
 
@@ -2256,7 +2260,7 @@ Source references:
 
 # Enforcement
 
-When future ResolveOS files touch global dependency structure, dependency management, requirement traceability, implementation review, project readiness, canonical project source assessment, tracker/repository reconciliation, evidence-backed continuation, project planning state, decision lifecycle, validation state, canonical project entrypoint behaviour, role/skill separation, context loading, running context, running-context freshness, chat handoffs, project initiation, update process, duplication control, decision-log templates, missing-context behaviour, project-loading rules, low-risk read-only analysis, metadata, global/project ownership, assistant operating principles, startup context, role-loading rules, role prompt structure, workflow extraction order, workflow ownership, ticket-to-implementation sequence, implementation-review-loop behaviour, feedback-to-ticket transition, template ownership, approved batch mode, previous-ticket inspection, general workflow applicability, Codex execution constraints, no-fake-functionality, cost-safe AI/API behaviour, acceptance-criteria format, ticket context, briefing context, completion reporting, blocker reporting, single-handoff communication, project verification commands, dependency ordering, feedback schema, default message classification, prioritisation filters, Product Manager ticket authority, Product Manager role boundary, Business Analyst ticket authority, QA Tester defect ticket authority, QA role taxonomy, Technical Strategy Lead technical ticket authority, Implementation Engineer ticket proposal authority, low-risk scope clarification, documentation hygiene ownership, or decision-maker reporting, they must follow ADR-001 through ADR-059 unless admin explicitly changes these decisions.
+When future ResolveOS files touch global dependency structure, dependency management, requirement traceability, implementation review, project readiness, canonical project source assessment, tracker/repository reconciliation, evidence-backed continuation, project planning state, decision lifecycle, validation state, canonical AI entrypoint behaviour, role/skill separation, context loading, running context, running-context freshness, chat handoffs, project initiation, update process, duplication control, decision-log templates, missing-context behaviour, project-loading rules, low-risk read-only analysis, metadata, global/project ownership, assistant operating principles, startup context, role-loading rules, role prompt structure, workflow extraction order, workflow ownership, ticket-to-implementation sequence, implementation-review-loop behaviour, feedback-to-ticket transition, template ownership, approved batch mode, previous-ticket inspection, general workflow applicability, Codex execution constraints, no-fake-functionality, cost-safe AI/API behaviour, acceptance-criteria format, ticket context, briefing context, completion reporting, blocker reporting, single-handoff communication, project verification commands, dependency ordering, feedback schema, default message classification, prioritisation filters, Product Manager ticket authority, Product Manager role boundary, Business Analyst ticket authority, QA Tester defect ticket authority, QA role taxonomy, Technical Strategy Lead technical ticket authority, Implementation Engineer ticket proposal authority, low-risk scope clarification, documentation hygiene ownership, or decision-maker reporting, they must follow ADR-001 through ADR-059 unless admin explicitly changes these decisions.
 
 # Exceptions
 

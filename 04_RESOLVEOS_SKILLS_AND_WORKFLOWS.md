@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 747d2d2ab4456ddc7a55063875241c0d2d75d3a5
+source_commit: d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -3797,7 +3797,9 @@ review_required: true
 
 Define the canonical ResolveOS workflow for starting a new project, adopting an existing project, or continuing work on an existing project.
 
-Project initiation is the canonical ResolveOS entry point.
+Project initiation is the governing ResolveOS workflow for new project initiation, existing project adoption, and existing project continuation.
+
+`00-system/resolveos-entrypoint.md` is the canonical ResolveOS AI entrypoint.
 
 When project access is available, users may start with `05-workflows/project-initiation.md`.
 
@@ -4772,7 +4774,8 @@ Do not:
 - automatically create external systems
 - assume every project needs every role
 - assume every project needs every chat
-- create an alternative ResolveOS entrypoint workflow
+- create an alternative ResolveOS AI entrypoint
+- create a duplicate project-initiation workflow
 - treat readiness as a single state
 - silently ignore tracker/repository, plan/implementation, metadata/state, or repository/external-implementation mismatches
 - continue implementation without available continuation evidence

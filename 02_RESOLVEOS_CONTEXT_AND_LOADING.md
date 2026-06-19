@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 747d2d2ab4456ddc7a55063875241c0d2d75d3a5
+source_commit: d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -1703,7 +1703,9 @@ Current phase: validation-driven refinement after successful project adoption te
 
 The template layer and core delivery skills are complete enough at draft level for validation-driven refinement.
 
-Project initiation is established as the canonical ResolveOS entry point for new project initiation, existing project adoption, and continuing existing projects when project access is available.
+`00-system/resolveos-entrypoint.md` is the canonical ResolveOS AI entrypoint.
+
+Project initiation is established as the governing workflow for new project initiation, existing project adoption, and continuing existing projects when project access is available.
 
 The successful ResolveYGO adoption test validated project initiation and revealed practical improvements around readiness states, canonical project source identification, tracker/repository reconciliation, and evidence-backed continuation.
 
@@ -1772,7 +1774,7 @@ The template review found no high-priority template rewrite requirement and warn
 
 Validation findings from the successful ResolveYGO adoption test and later project-state refinement:
 
-- Project initiation is validated as the canonical ResolveOS entry point.
+- Project initiation is validated as the governing workflow for new project initiation, existing project adoption, and existing project continuation.
 - Architecture Review #3 is complete and found ResolveOS functionally complete at draft level.
 - Validation-driven improvements are needed for readiness states, canonical project source assessment, reconciliation between tracker state and repository reality, and evidence-backed continuation.
 - Final core refinements define planning ownership, decision states, and validation state so continuation can identify objective, active work, next actions, blockers, decisions, evidence, and validation gaps.
@@ -1843,7 +1845,7 @@ Active risks:
 - Unreviewed draft files may be treated as final source of truth too early.
 - Role-specific or project-specific running contexts could become competing sources of truth if created without clear ownership.
 - Running context may go stale if agents rely on chat timestamps instead of file metadata.
-- Project initiation could become overloaded if future batches add bootstrap-file creation, external-tool creation, or project doctrine to the canonical entrypoint.
+- Project initiation could become overloaded if future batches add bootstrap-file creation, external-tool creation, or project doctrine to the governing workflow.
 - Readiness language could become too heavy if applied to low-risk casual conversations.
 - Canonical-source and reconciliation checks could accidentally absorb project-specific tracker fields or repository conventions if not kept source-owned.
 - Planning, decision, and validation state could become too heavy if future work tries to recreate Jira, Notion, Azure DevOps, Trello, GitHub Issues, or research-management tools.
@@ -1869,7 +1871,7 @@ Recommended handling:
 - Use project repositories for project-specific current focus, ticket state, roadmap, architecture, commands, and source-system details.
 - Use `05-workflows/project-initiation.md` as the preferred ResolveOS starting point when project access is available.
 - Treat governance stabilisation as complete enough at draft level for careful continuation.
-- Treat project initiation as the entry point for new project initiation, existing project adoption, and continuing existing projects.
+- Treat `00-system/resolveos-entrypoint.md` as the AI entrypoint and project initiation as the governing workflow for new project initiation, existing project adoption, and continuing existing projects.
 - Use `06-governance/project-readiness.md` when adoption, discovery, planning, implementation, or validation readiness affects the highest-leverage activity.
 - Treat readiness states independently; one readiness state does not imply another.
 - During project initiation, identify canonical project sources and surface tracker/repository, plan/implementation, metadata/state, and repository/external-implementation inconsistencies.
@@ -1899,7 +1901,7 @@ Do not repeat these mistakes:
 - Do not duplicate ADR content inside this file.
 - Do not duplicate migration report findings inside this file.
 - Do not create extra templates, skills, workflows, roles, or governance files without an approved batch.
-- Do not create alternative ResolveOS entrypoint workflows while project initiation owns entrypoint behaviour.
+- Do not create alternative ResolveOS AI entrypoints or duplicate project-initiation workflows.
 - Do not treat adoption readiness, discovery readiness, planning readiness, implementation readiness, and validation readiness as the same thing.
 - Do not silently ignore differences between tracker state and repository reality.
 - Do not create duplicate planning, decision, or validation systems when a project source of truth already exists.
@@ -1933,7 +1935,8 @@ Use these canonical homes:
 - Migration findings and batch readiness: migration reviews and audit reports
 - Communication structures: `04-templates/`
 - Reusable behaviours and methods: `02-roles/`, `03-skills/`, `05-workflows/`, and `06-governance/`
-- ResolveOS project entrypoint: `05-workflows/project-initiation.md`
+- ResolveOS AI entrypoint: `00-system/resolveos-entrypoint.md`
+- Project initiation workflow: `05-workflows/project-initiation.md`
 
 # Last Reviewed
 
