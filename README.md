@@ -3,26 +3,32 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 747d2d2ab4456ddc7a55063875241c0d2d75d3a5
+source_commit: d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
 generated: true
 status: draft
 ---
 
 # ResolveOS ChatGPT Project Setup Guide
 
-## What ResolveOS Is
+## What is ResolveOS?
 
 ResolveOS helps ChatGPT understand, organise, continue, and improve projects.
 
-It gives ChatGPT a single starting point for deciding whether you are starting a new project, adopting an existing project, continuing work, asking for status, planning, reviewing, or validating work.
+It gives ChatGPT one clear starting point so you can describe your project in plain English and let ResolveOS work out the right next step.
 
-You do not need to learn any setup terminology. Describe what you need in plain English.
+You can use ResolveOS with a new idea, GitHub repository, Notion workspace, Jira project, existing docs, business process, partially complete project, or notes about what is blocked.
 
-## Files To Upload
+## Setup
 
-Upload these files to the ChatGPT Project knowledge area:
+### Step 1: Create A ChatGPT Project
 
-- `START_HERE.md`
+Create a new ChatGPT Project and give it a clear project name.
+
+### Step 2: Upload Files
+
+Upload:
+
+- `README.md`
 - `01_RESOLVEOS_CORE.md`
 - `02_RESOLVEOS_CONTEXT_AND_LOADING.md`
 - `03_RESOLVEOS_ROLES.md`
@@ -30,23 +36,9 @@ Upload these files to the ChatGPT Project knowledge area:
 - `05_RESOLVEOS_TEMPLATES.md`
 - `06_RESOLVEOS_GOVERNANCE.md`
 
-Do not upload `generate-resolveos-bundles.ps1`.
+### Step 3: Paste Project Instructions
 
-## How To Create A ChatGPT Project
-
-1. Create a new ChatGPT Project.
-2. Give it a clear project name.
-3. Upload `START_HERE.md` and the six ResolveOS bundle files.
-4. Paste the Project Instructions below into the project instructions field.
-5. Start the first chat by describing the project or work you want help with.
-
-## How To Paste Project Instructions
-
-Copy the exact text in the Project Instructions section below.
-
-Paste it into the ChatGPT Project instructions field without changing the wording.
-
-## Project Instructions
+Paste this exact text into the ChatGPT Project instructions field:
 
 ```text
 Always begin by loading and following 00-system/resolveos-entrypoint.md.
@@ -54,51 +46,34 @@ Always begin by loading and following 00-system/resolveos-entrypoint.md.
 Do not bypass it.
 ```
 
-## Start A New Project
+### Step 4: Start Chatting Normally
 
-Start with a short plain-English message, for example:
-
-```text
-I have an idea for a project and want help turning it into a clear plan.
-```
-
-ResolveOS should identify that this is a new project, ask only for missing essentials, and recommend the next useful action.
-
-## Adopt An Existing Project
-
-Provide the source you already have, for example:
+Start with a plain-English message, for example:
 
 ```text
-Here is my repo. I want ResolveOS to review what exists and help me work out what should happen next.
+I want to use ResolveOS for this project. Here is what I have and what I want help with: ...
 ```
 
-You can provide a GitHub repository, Notion workspace, Jira project, existing docs, business process, or partially complete project.
+ResolveOS should identify whether your project is new, existing, or already in progress. It should ask only for missing essentials and recommend the highest-leverage activity plus practical next actions.
 
-ResolveOS should preserve existing project state and use the project source of truth where available.
+## Quick Test
 
-## Continue An Existing Project
-
-Use a direct continuation request, for example:
+Create a new chat and enter:
 
 ```text
-Continue this project. We were working on onboarding and need to know what comes next.
+I want to build a SaaS that helps agencies manage client approvals.
 ```
 
-ResolveOS should use available project context before relying on memory, identify missing context if needed, and avoid pretending it knows current project state when it has not been loaded.
+Expected behaviour:
 
-## Verify ResolveOS Is Working
+- project classification
+- readiness assessment
+- objective identification
+- team determination
+- highest-leverage activity
+- recommended actions
 
-ResolveOS is working when ChatGPT:
-
-- starts by using `00-system/resolveos-entrypoint.md`
-- classifies the type of interaction before answering
-- loads the required uploaded files for that interaction
-- uses your project source of truth when project-specific context is needed
-- asks for missing context instead of inventing project facts
-- gives clearly caveated general guidance only for low-risk questions
-- stops when continuing would require unsupported project assumptions
-
-If ChatGPT skips the entrypoint or asks you to choose setup files, check that all seven files were uploaded and that the Project Instructions text was pasted exactly.
+If those occur, ResolveOS is functioning correctly.
 
 ## Source
 
@@ -111,7 +86,7 @@ https://github.com/simeonfab/ResolveOS
 Source commit:
 
 ```text
-747d2d2ab4456ddc7a55063875241c0d2d75d3a5
+d3dfaaf262f46aa1aa8444ee748a0c1f41f06591
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Re-upload the refreshed files when ResolveOS is updated.
