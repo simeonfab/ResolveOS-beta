@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 3262ea07850e86617bc0b53ff855516fff2d5926
+source_commit: 83eace0995e7699e3ed6e38c0a92a52fcec60e1e
 generated: true
 generated_date: 2026-06-19
 included_paths:
