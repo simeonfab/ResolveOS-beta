@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 6a35ddf63574902deb53fb7aff11f45516e3fac6
+source_commit: 747d2d2ab4456ddc7a55063875241c0d2d75d3a5
 generated: true
 generated_date: 2026-06-19
 included_paths:
@@ -847,7 +847,9 @@ Do not ask the user to choose a workflow when the routing table determines one.
 Use this exact text for ResolveOS ChatGPT Project instructions:
 
 ```text
-Always begin by loading and following 00-system/resolveos-entrypoint.md. Do not bypass it. If required context is missing, follow the entrypoint's missing-context response rules.
+Always begin by loading and following 00-system/resolveos-entrypoint.md.
+
+Do not bypass it.
 ```
 
 ## Classification Rules
