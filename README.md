@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 0561d49c5dfaa553c1264cc1a15cc162a011dfc8
+source_commit: 3af2c7fe1df053dfcc6f79b255b05b66ea019d16
 generated: true
 status: draft
 ---
@@ -139,7 +139,7 @@ https://github.com/simeonfab/ResolveOS
 Source commit:
 
 ```text
-0561d49c5dfaa553c1264cc1a15cc162a011dfc8
+3af2c7fe1df053dfcc6f79b255b05b66ea019d16
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Re-upload the refreshed files when ResolveOS is updated.
