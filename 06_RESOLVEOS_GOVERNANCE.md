@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 83eace0995e7699e3ed6e38c0a92a52fcec60e1e
+source_commit: a3a921c2cc6476e1291b6e21f664c634e24616f1
 generated: true
-generated_date: 2026-06-19
+generated_date: 2026-06-21
 included_paths:
   - 06-governance/architecture-decisions.md
   - 06-governance/codex-working-rules.md
@@ -3454,6 +3454,8 @@ Being ready for one stage does not imply readiness for another.
 
 This governance exists because the ResolveYGO adoption validation showed that a project can be suitable for ResolveOS adoption while still needing separate checks for canonical source, current state, tracker/repository consistency, implementation readiness, and validation evidence.
 
+Readiness language should help the user move forward. Do not surface a readiness gap without also identifying whether it blocks current progress, the smallest mitigation, and the next action.
+
 Source references:
 
 - `migration/architecture-review-3.md` > Project Initiation Assessment
@@ -3479,6 +3481,8 @@ Do not say a project is validation ready because implementation exists.
 
 Do not hide uncertainty about readiness. If evidence is missing, mark the readiness state as blocked, partial, or unknown.
 
+Do not describe a project as not ready without explaining the practical resolution path.
+
 Readiness assessment should identify:
 
 - purpose
@@ -3486,6 +3490,13 @@ Readiness assessment should identify:
 - common blockers
 - minimum conditions
 - anti-patterns
+- whether a gap blocks progress now
+- what can still continue safely, if anything
+- the smallest mitigation or source needed
+- which user-facing role, team member, specialist chat, AI assistant, engineer, consultant, or source owner should handle it
+- whether a prompt, handoff, checklist, or follow-up task should be generated
+
+Keep readiness output proportionate. Initial setup should not list every readiness category unless it helps the user understand the project state or next action.
 
 # Validation State Model
 
@@ -3715,6 +3726,8 @@ Project initiation, continuation, implementation planning, and validation work s
 
 If readiness is partial, blocked, or unknown, report the blocker or uncertainty clearly.
 
+Also report the practical resolution path. If the issue does not block the current objective, say so and continue with an explicit limitation.
+
 Where readiness depends on project-specific systems, keep exact commands, tools, fields, ticket keys, repositories, databases, and implementation details in the project repository or source system.
 
 # Exceptions
@@ -3732,6 +3745,7 @@ Adoption ready but not implementation ready:
 ```text
 The project has an accessible repository and source documentation, so ResolveOS can assess adoption.
 Implementation should not start yet because the active ticket, acceptance criteria, and latest completion evidence are missing.
+Smallest mitigation: provide the active ticket or latest handoff, or approve a clearly labelled implementation-readiness draft.
 ```
 
 Planning ready but not validation ready:
@@ -3739,6 +3753,7 @@ Planning ready but not validation ready:
 ```text
 The next work can be planned from the source context and tracker.
 Validation is not ready because the project-specific check commands and expected manual result are not documented.
+Smallest mitigation: document the validation path before claiming acceptance or release readiness.
 ```
 
 # Notes
@@ -3782,6 +3797,8 @@ Every important rule should have one canonical home.
 Copies, summaries, references, and derived versions may exist.
 
 Ownership must exist in one place only.
+
+When ResolveOS surfaces a source-of-truth issue, it should also state whether the issue blocks current progress and the practical resolution path.
 
 ## Ownership Hierarchy
 
@@ -3846,6 +3863,15 @@ ResolveOS Standards
 ```
 
 Conflicts should be documented rather than silently resolved.
+
+Conflict output should identify:
+
+- which sources conflict
+- what decision, evidence, or source owner can resolve the conflict
+- whether the conflict blocks the current objective
+- what can safely continue, if anything
+- the smallest mitigation or next action
+- whether a prompt, handoff, decision note, or source-owner review is needed
 
 ## Context Loading Hierarchy
 
@@ -3923,6 +3949,10 @@ When an override exists:
 - The reason should be documented.
 - The override should be reviewed periodically.
 
+When a source conflict does not block current work, ResolveOS should say so and proceed with an explicit limitation.
+
+When a source conflict blocks implementation, validation, approval, or project direction, ResolveOS should stop before that work and name the smallest required confirmation.
+
 ## Review Requirements
 
 Review is required before:
@@ -3968,6 +3998,8 @@ If a contradiction is discovered:
 - Flag it.
 - Review it.
 - Update the canonical file.
+- State whether the contradiction blocks current progress.
+- State the smallest practical mitigation.
 
 Do not silently create competing standards.
 

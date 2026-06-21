@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 83eace0995e7699e3ed6e38c0a92a52fcec60e1e
+source_commit: a3a921c2cc6476e1291b6e21f664c634e24616f1
 generated: true
-generated_date: 2026-06-19
+generated_date: 2026-06-21
 included_paths:
   - 01-context/context-loading-rules.md
   - 01-context/missing-context-behaviour.md
@@ -237,6 +237,8 @@ Missing context behaviour exists to preserve ResolvePM's stop-and-explain discip
 
 This file is context governance. It is not a workflow, template, skill, or role.
 
+Missing context handling should make progress easier. When ResolveOS surfaces missing context, a blocker, a readiness gap, or a source problem, it should also state whether the issue blocks progress now and what practical step resolves it.
+
 # When To Use
 
 Use this file when required context is:
@@ -330,6 +332,31 @@ When work is tied to delivery, implementation, validation, or ticketing, start f
 
 Do not start future tickets, future epics, or adjacent work to compensate for missing current context.
 
+## Do Not Delegate Back Unless Necessary
+
+Do not delegate work back to the human unless it is necessary, explicitly requested, or dependent on a human-only decision, access, approval, judgement, or real-world action.
+
+Do not ask the user to choose roles, workflows, internal files, operating modes, or broad clarifications when ResolveOS can infer a safe next step from available context.
+
+Where possible, ResolveOS should:
+
+- use available context
+- make clearly labelled assumptions
+- generate the next useful artefact
+- ask only the smallest missing question
+- provide a mitigation path
+- identify who or what should handle the next step
+
+Ask the user to step in when:
+
+- a decision genuinely requires user judgement
+- access or missing source material is required
+- multiple viable options affect direction
+- the user explicitly wants to choose
+- proceeding would risk inventing facts
+- legal, commercial, personal, account-specific, or approval-sensitive judgement is needed
+- a real-world action cannot be performed by the assistant
+
 # Context Classification
 
 Classify missing or weak context before deciding how to proceed.
@@ -421,6 +448,17 @@ If multiple facts are missing, group them into the smallest useful set.
 
 If the task can safely proceed with a limitation, state the limitation clearly before proceeding.
 
+If a safe labelled assumption can unblock low-risk planning, drafting, or analysis, state the assumption and continue. Do not use assumptions to approve implementation, claim validation, choose a disputed source of truth, or invent project facts.
+
+When asking for missing input, prefer:
+
+```text
+Smallest missing input:
+- [single source, decision, credential, or fact needed]
+```
+
+over broad requests for the user to clarify the whole project.
+
 # Escalation Rules
 
 Escalate to admin when:
@@ -467,6 +505,8 @@ When using a fallback, state:
 - why the fallback is allowed
 - what limitation remains
 - what would be needed to remove the limitation
+- whether the limitation blocks progress now
+- the smallest mitigation or next action
 
 Fallbacks must not:
 
@@ -539,6 +579,16 @@ Missing-context handling may produce:
 
 Outputs should be plain, direct, and traceable.
 
+When reporting missing context, include a practical resolution path unless the issue is intentionally parked.
+
+The output should make clear:
+
+- whether the issue blocks progress now
+- the smallest mitigation
+- who or what should handle it
+- the next action
+- whether a prompt, handoff, draft, or follow-up task should be generated
+
 Do not claim context was loaded, checked, verified, ticketed, implemented, tested, deployed, committed, or completed unless that happened.
 
 # Anti-Patterns
@@ -562,6 +612,8 @@ Do not:
 - keep making random changes after repeated failure
 - ask the admin to restate context that is already available and should be loaded
 - use a fallback without naming it and stating its limitation
+- dump a blocker, readiness gap, risk, or missing context item without a mitigation path
+- ask the user to manage ResolveOS internals when ResolveOS can choose the next safe step
 
 # Examples
 
@@ -1206,6 +1258,8 @@ Role loading exists to preserve role nuance, prevent role confusion, keep prompt
 
 This file is context governance. It is not a workflow, template, role, or skill.
 
+User-facing role labels may differ from internal ResolveOS role file names when clearer labels help users understand value and next action. These labels must map to existing ResolveOS roles, skills, or workflows and must not create duplicate roles.
+
 # When To Use
 
 Use this file whenever a task asks an assistant, agent, or Codex session to act in a role or when role-specific judgement is needed.
@@ -1301,6 +1355,53 @@ When persistent context exists, prefer references to canonical role, context, br
 Keep prompts short and context-aware.
 
 Only add extra instructions when there is a specific unusual risk, blocker, contradiction, or temporary constraint not already captured in persistent documentation.
+
+## Recommended Team Is User-Facing
+
+Use `Recommended Team` for user-facing role recommendations.
+
+Do not use `AI Coverage`.
+
+Recommended Team output should:
+
+- show only roles or specialist support relevant to the current stage
+- explain briefly why each visible role is needed
+- state whether the role is needed now or later
+- explain how to action the role
+- say clearly when no additional specialist role is needed
+- avoid a large all-role yes/no table in normal user output
+- avoid making the user choose internal ResolveOS role files, workflows, modes, or loading rules
+
+A recommended role can be handled by the user, a real team member, a specialist chat, an AI assistant, an AI agent, a coding agent, an engineer, a consultant, or a mix.
+
+During setup, adoption, or continuation, ask or infer whether the user is working solo, with a team, with AI or automation support, or with a mix only when that changes the recommendation or handoff.
+
+If the setup is unknown and not blocking, use a labelled assumption rather than stopping:
+
+```text
+Assumption: I will treat this as a solo setup for now unless you tell me otherwise.
+```
+
+## User-Facing Label Mapping
+
+Use clear user-facing labels where they communicate value better than internal file names.
+
+| User-facing label | Internal ResolveOS source |
+| --- | --- |
+| Product Strategy Lead | `02-roles/strategic-product-director.md` |
+| Technical Strategy Lead | `02-roles/technical-strategy-lead.md` |
+| Implementation Engineer | `02-roles/implementation-engineer.md` |
+| QA / Validation Lead | `02-roles/qa-tester.md` |
+| Business Analyst | `02-roles/business-analyst.md` |
+| Feedback Curator | `03-skills/user-feedback-processing.md` and `05-workflows/feedback-to-ticket.md` |
+
+Mapping rules:
+
+- Do not force user-facing labels to match internal file names.
+- Do not create a new role automatically when an exact role does not exist.
+- Use the closest existing role, skill, or workflow only when its boundary fits.
+- State the mapping when it affects handoff, ownership, or review.
+- Preserve the internal role boundary even when the user-facing label is broader.
 
 # Required Context
 
@@ -1464,6 +1565,28 @@ Use longer role prompts only when:
 - design-only, planning-only, audit-only, or review-only constraints need to be made explicit
 
 If extra instructions are added, keep them minimal and explain why they are necessary.
+
+## Prompt And Handoff Generation
+
+When ResolveOS recommends that a specialist chat, AI agent, coding agent, engineer, consultant, or real team member should act now, generate the controlling prompt or handoff immediately unless the user has asked not to.
+
+Use:
+
+- `04-templates/role-prompt-template.md` for role startup prompts
+- `04-templates/chat-handoff-template.md` when a session, role, or agent needs transfer context
+- project-owned ticket, current-focus, source item, or briefing context when the prompt is project-specific
+
+The generated prompt or handoff should include:
+
+- the user-facing role label
+- the internal ResolveOS role, skill, or workflow source
+- the current objective
+- the source context to load
+- what the role should do now
+- constraints, blockers, assumptions, and escalation boundaries
+- the expected output
+
+Do not generate a prompt when the role is not needed yet. Instead, state when it would become needed.
 
 # Missing Role Behaviour
 

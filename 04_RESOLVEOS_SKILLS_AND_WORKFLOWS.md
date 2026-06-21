@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 83eace0995e7699e3ed6e38c0a92a52fcec60e1e
+source_commit: a3a921c2cc6476e1291b6e21f664c634e24616f1
 generated: true
-generated_date: 2026-06-19
+generated_date: 2026-06-21
 included_paths:
   - 03-skills/acceptance-criteria.md
   - 03-skills/completion-reporting.md
@@ -3805,6 +3805,8 @@ Users should start from `README.md`. ResolveOS AI interactions should start from
 
 Project initiation determines the appropriate operating model, roles, chats, context, source-of-truth structure, setup requirements, known gaps, highest-leverage activity, and top recommended actions.
 
+Project initiation should make ResolveOS value visible without exposing unnecessary internal framework complexity. It should show the project situation, what matters now, what is blocked, what team or specialist support is needed, and how to move forward.
+
 Project initiation may be:
 
 - new project initiation
@@ -3877,6 +3879,14 @@ For an existing project, useful inputs include:
 - known assumptions, validation evidence, confidence, or validation status where these affect readiness
 
 If key inputs are missing, proceed with an explicit limitation only when the assessment can remain useful and read-only.
+
+During setup, adoption, or continuation, ask or infer whether the user is working solo, with a team, with AI or automation support, or with a mix only when that changes the recommended team, handoff, or next action.
+
+If unknown and not blocking, default to a light assumption:
+
+```text
+I will assume you are working solo for now unless you tell me otherwise.
+```
 
 # New Project Initiation
 
@@ -4207,7 +4217,34 @@ If uncertain, recommend rather than assume.
 
 Use `01-context/role-loading-rules.md` and the role files to recommend only the roles needed.
 
-Role selection guidance:
+Use the user-facing label `Recommended Team`, not `AI Coverage`.
+
+Recommended Team output should:
+
+- show only roles or specialist support relevant to the current stage
+- briefly explain why each visible role is needed
+- say whether it is needed now or later
+- explain how to action it
+- say clearly when no additional specialist role is needed
+- avoid giant all-role yes/no matrices in normal user output
+- avoid asking the user to manage internal role files or workflows
+
+Role recommendations are not the same as role loading. Recommend a visible team only when it helps the user understand next action, handoff, ownership, or specialist support.
+
+Use clear user-facing labels when they communicate value better than internal role file names. Map them internally to existing ResolveOS roles, skills, or workflows:
+
+| User-facing label | Internal ResolveOS source |
+| --- | --- |
+| Product Strategy Lead | Strategic Product Director role |
+| Technical Strategy Lead | Technical Strategy Lead role |
+| Implementation Engineer | Implementation Engineer role |
+| QA / Validation Lead | QA Tester role |
+| Business Analyst | Business Analyst role |
+| Feedback Curator | User feedback processing skill and feedback-to-ticket workflow |
+
+Do not create a new role when an exact internal role does not exist. Use the closest existing role, skill, or workflow only when its boundary fits, and make the mapping explicit when it matters.
+
+Internal role selection guidance:
 
 - Product Manager for product execution clarity, ticket readiness, scope, and feedback-to-work discipline.
 - Business Analyst for requirements, assumptions, ambiguity, traceability, and business rules.
@@ -4221,6 +4258,23 @@ Do not recommend every role by default.
 Do not flatten specialist roles into generic project roles.
 
 If a requested role does not exist, do not invent it. Recommend the closest existing role only when its boundary fits.
+
+When a recommended role should act now, generate the specialist prompt or handoff immediately unless the user has asked not to. Use `04-templates/role-prompt-template.md` for role startup prompts and `04-templates/chat-handoff-template.md` for handoffs when session transfer is needed.
+
+Recommended Team examples:
+
+```text
+Recommended Team for now:
+
+- Product Strategy Lead - needed now because the value proposition and target user are still unclear.
+  Next step: start a strategy chat using the prompt below.
+
+No Implementation Engineer is needed yet because there is no approved implementation scope.
+```
+
+```text
+No additional specialist role is needed right now. Continue in this chat with the current project setup.
+```
 
 # Chat Assessment
 
@@ -4355,9 +4409,10 @@ Current Readiness:
 Current Objective:
 - One plain-English sentence
 
-Active Team:
-- Recommended ResolveOS roles
-- ResolveOS coordinates these automatically; the user does not need to choose roles.
+Recommended Team:
+- Recommended Team for now
+- Only roles or specialist support that matter now.
+- These may be real people, the user, specialist chats, AI assistants, AI agents, coding agents, engineers, consultants, or a mix.
 
 Open Risks:
 - Concise list
@@ -4463,6 +4518,8 @@ Assess adoption, discovery, planning, implementation, and validation readiness i
 
 Do not allow one readiness state to imply another.
 
+For each material readiness gap, state whether it blocks progress now, the smallest mitigation, and the next action. Do not dump a "not ready" finding on the user without a path forward.
+
 ## 7. Reconcile Source State
 
 Compare tracker, repository, plan, metadata, external implementation, completion, and decision evidence where relevant.
@@ -4483,11 +4540,15 @@ Avoid heavy process where a smaller model is enough.
 
 ## 10. Assess Roles
 
-Recommend primary and supporting ResolveOS roles.
+Recommend the user-facing Recommended Team for now.
 
 State why each role is needed.
 
 State which roles are not needed yet when useful.
+
+If no additional specialist role is needed, say so clearly.
+
+If a role should act now, generate the prompt or handoff needed to action it.
 
 ## 11. Assess Chats
 
@@ -4508,6 +4569,8 @@ For existing projects, identify what should be preserved.
 List known gaps, blockers, risks, and uncertainty.
 
 Do not hide missing source systems or stale context.
+
+For each material gap or risk, include whether it blocks now, the smallest mitigation, who or what should handle it, and the next action.
 
 ## 14. Produce Project Setup Report
 
@@ -4531,6 +4594,8 @@ Each recommended action should be:
 
 The goal is maximum useful progress, not minimum effort.
 
+Use Highest-Leverage Activity only when it is genuinely meaningful. It should be part of a practical plan forward, not a label applied to every response.
+
 If the highest-leverage activity or a recommended action requires project-specific files, source systems, external tools, or integrations, state that it requires approval.
 
 # Project Setup Report
@@ -4552,7 +4617,7 @@ Project Snapshot:
 - Project Type:
 - Current Readiness:
 - Current Objective:
-- Active Team:
+- Recommended Team:
 - Open Risks:
 - Open Decisions:
 - Missing Information:
@@ -4565,7 +4630,7 @@ Objective:
 Recommended operating model:
 -
 
-Recommended roles:
+Recommended Team for now:
 -
 
 Recommended chats:
@@ -4635,13 +4700,13 @@ Source-of-truth behaviour:
 - Conflicts or missing sources:
 
 Known gaps:
--
+- [For each material gap: whether it blocks now, smallest mitigation, next action.]
 
 Active risks:
--
+- [For each material risk: whether it blocks now, smallest mitigation, next action.]
 
 Blockers:
--
+- [For each blocker: smallest unblocker, owner or role, next action.]
 
 Project-specific items to preserve:
 -
@@ -4650,6 +4715,9 @@ Items not recommended yet:
 -
 
 Next actions:
+-
+
+Specialist prompts or handoffs needed now:
 -
 ```
 
@@ -5478,6 +5546,8 @@ This guide explains how a user should start using ResolveOS without needing to u
 
 ResolveOS should determine the right operating approach automatically from the user's project, available sources, and current goal.
 
+ResolveOS should make project progress easier. When it identifies a role, risk, blocker, missing context item, readiness gap, or setup issue, it should also make clear whether it matters now and what practical step resolves it.
+
 # Trigger
 
 Use this guide when:
@@ -5513,7 +5583,43 @@ If a project already uses Jira, Notion, GitHub Issues, Azure DevOps, or another 
 
 # Steps
 
-## 1. Start With Plain English
+## 1. Understand What ResolveOS Does
+
+ResolveOS helps users turn ideas, existing projects, scattered notes, repositories, docs, tasks, and blockers into a clear project operating model.
+
+It should help answer:
+
+- what the project is trying to achieve
+- what state the project is in
+- what context is reliable
+- what is missing
+- what is blocked
+- what risks matter now
+- which team roles or specialist support are needed now
+- what practical action should happen next
+- whether the project is ready for planning, implementation, or validation
+- what should be handed to an engineer, AI agent, specialist chat, consultant, or team member
+
+ResolveOS should not only report project state. It should provide the practical path forward.
+
+## 2. Get The Most Out Of ResolveOS
+
+Users get the most value when they provide real project context.
+
+Encourage users to:
+
+- describe the goal or current problem in plain English
+- say whether they are working solo, with a team, with AI or automation support, or with a mix
+- provide source-of-truth links or pasted context where possible
+- share current tasks, blockers, decisions, risks, feedback, validation notes, or handoffs
+- ask for the project state, blocked items, Recommended Team, practical plan, readiness, or implementation handoff
+- restart stale chats by asking for a Project Snapshot or continuation assessment
+
+If the user does not know the source of truth, ResolveOS should help identify it.
+
+If the user does not know which role, workflow, or setup is needed, ResolveOS should infer the useful next step and ask only for the smallest missing input when needed.
+
+## 3. Start With Plain English
 
 The user should describe what they want ResolveOS to help with.
 
@@ -5543,7 +5649,7 @@ This is an existing business process for onboarding clients. Help me document it
 This project is partially complete. Help me figure out what was done, what is still active, and the safest next step.
 ```
 
-## 2. Let ResolveOS Choose The Approach
+## 4. Let ResolveOS Choose The Approach
 
 Users do not need to choose internal operating details.
 
@@ -5575,7 +5681,7 @@ It should decide whether the project needs:
 
 If ResolveOS cannot safely decide, it should ask a small number of plain-English questions.
 
-## 3. Expect A Project Snapshot When It Helps
+## 5. Expect A Project Snapshot When It Helps
 
 ResolveOS should show a compact Project Snapshot when orientation adds value.
 
@@ -5609,9 +5715,10 @@ Current Readiness:
 Current Objective:
 - One plain-English sentence
 
-Active Team:
-- Recommended ResolveOS roles
-- ResolveOS coordinates these automatically; the user does not need to choose roles.
+Recommended Team:
+- Recommended Team for now
+- Only roles or specialist support that matter now.
+- These may be real people, the user, specialist chats, AI assistants, AI agents, coding agents, engineers, consultants, or a mix.
 
 Open Risks:
 - Concise list
@@ -5635,7 +5742,40 @@ Use plain English.
 
 Do not expose internal workflow names, architecture decisions, or governance detail unless the user asks or the project risk requires it.
 
-## 4. Project Initiation
+## 6. Recommended Team
+
+ResolveOS should use "Recommended Team", not "AI Coverage".
+
+Recommended Team output should appear when it helps the user understand who or what should handle the next stage. This includes new project setup, existing project adoption, project continuation where role coverage matters, implementation planning, validation planning, product or commercial strategy, and handoff scenarios.
+
+Show only the team roles needed now. Do not show a giant all-role yes/no matrix in normal user output.
+
+For each visible role, state:
+
+- whether it is needed now or later
+- why it is needed
+- whether it can be handled by a real person, the user, a specialist chat, an AI assistant, an AI agent, a coding agent, an engineer, a consultant, or either
+- the practical next step
+- whether a prompt or handoff should be generated now
+
+If no additional specialist role is needed, say so clearly.
+
+Use user-facing labels where they communicate value better than internal role file names. Map them internally to existing roles, skills, or workflows:
+
+| User-facing label | Internal ResolveOS source |
+| --- | --- |
+| Product Strategy Lead | Strategic Product Director role |
+| Technical Strategy Lead | Technical Strategy Lead role |
+| Implementation Engineer | Implementation Engineer role |
+| QA / Validation Lead | QA Tester role |
+| Business Analyst | Business Analyst role |
+| Feedback Curator | User feedback processing skill and feedback-to-ticket workflow |
+
+Do not create new roles automatically when an exact internal role does not exist.
+
+When a recommended role should act now, generate the specialist prompt or handoff immediately unless the user has asked not to.
+
+## 7. Project Initiation
 
 Project initiation is for starting something new.
 
@@ -5660,7 +5800,7 @@ Expected outcome:
 - known gaps and questions
 - no unnecessary process or tool setup
 
-## 5. Project Adoption
+## 8. Project Adoption
 
 Project adoption is for applying ResolveOS to something that already exists.
 
@@ -5683,8 +5823,10 @@ Expected outcome:
 - a source-of-truth assessment
 - gaps, risks, and blockers
 - a practical adoption path that does not overwrite existing work
+- a Recommended Team only where role coverage matters now
+- prompt or handoff generation when a specialist role should act now
 
-## 6. Project Continuation
+## 9. Project Continuation
 
 Project continuation is for resuming a project that already has work in progress.
 
@@ -5715,8 +5857,14 @@ Expected outcome:
 - a clear next step
 - missing evidence named clearly
 - no work continued from memory alone when project evidence is needed
+- a Project Snapshot when the chat is stale, restarted, explicitly status-focused, or materially reoriented
+- a practical mitigation path for missing context, blockers, or readiness gaps
 
-## 7. How ResolveOS Decides What To Do
+If there is not enough reliable context to continue implementation safely, ask for the smallest unblocker such as the latest handoff, source-of-truth link, or current task.
+
+If planning can still proceed safely from available context, state that limitation clearly and do not recommend implementation until the latest source of truth is confirmed.
+
+## 10. How ResolveOS Decides What To Do
 
 ResolveOS should use the user's goal, available project sources, and current state to decide the next useful action.
 
@@ -5735,6 +5883,16 @@ ResolveOS should prefer the activity that creates the greatest project progress,
 
 It should not confuse high leverage with heavy process, create unnecessary files, invent facts, or assume every project needs the same setup.
 
+Use Highest-Leverage Activity only when it is genuinely meaningful. It should sit inside a practical plan, not replace one.
+
+When ResolveOS surfaces a risk, blocker, readiness gap, source-of-truth issue, missing context item, or setup problem, it should also state:
+
+- whether the issue blocks progress now
+- the smallest mitigation
+- who or what should handle it
+- the next action
+- whether a prompt or handoff should be generated
+
 # Outputs
 
 ResolveOS may produce:
@@ -5750,6 +5908,9 @@ ResolveOS may produce:
 - validation notes
 - blocker or risk summaries
 - suggested project context
+- Recommended Team for now
+- specialist prompt or handoff when a role should act now
+- risk, blocker, readiness, or source-of-truth mitigation path
 
 The output should be understandable to someone who has not read ResolveOS internals.
 

@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 83eace0995e7699e3ed6e38c0a92a52fcec60e1e
+source_commit: a3a921c2cc6476e1291b6e21f664c634e24616f1
 generated: true
-generated_date: 2026-06-19
+generated_date: 2026-06-21
 included_paths:
   - 04-templates/blocker-report-template.md
   - 04-templates/briefing-template.md
@@ -2293,12 +2293,20 @@ Keep the prompt short and reference-based. Do not paste full role files, project
 # Role
 
 ```text
+User-facing role label:
+- [Product Strategy Lead / Technical Strategy Lead / Implementation Engineer / QA / Validation Lead / Business Analyst / Feedback Curator / other clear label]
+
 Use this role:
 - [ResolveOS role file path]
+
+Internal ResolveOS source:
+- [Role, skill, or workflow path used for authority and behaviour]
 
 Act as:
 - [Role name]
 ```
+
+User-facing labels may differ from internal ResolveOS role file names when clearer labels help the recipient understand value and action. Do not create a new role from a label. Map the label to an existing ResolveOS role, skill, or workflow.
 
 # Purpose
 
@@ -2447,6 +2455,8 @@ Recommended first actions:
 
 Use this template when creating a role startup prompt for a ResolveOS role.
 
+Also use it when ResolveOS recommends a specialist chat, AI agent, coding agent, engineer, consultant, or real team member and the role should act now.
+
 This template inherits behaviour from:
 
 - `01-context/role-loading-rules.md`
@@ -2466,12 +2476,20 @@ Use longer role prompts only when required scope is missing, comments or source 
 
 If extra instructions are added, keep them minimal and explain why they are necessary.
 
+When a prompt is generated from a Recommended Team output, include the practical reason the role is needed now and the expected next action.
+
 # Example
 
 ```text
 Role
 
+User-facing role label:
+- Implementation Engineer
+
 Use this role:
+- 02-roles/implementation-engineer.md
+
+Internal ResolveOS source:
 - 02-roles/implementation-engineer.md
 
 Act as:
