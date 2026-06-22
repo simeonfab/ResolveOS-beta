@@ -5,13 +5,14 @@ owner: ResolveOS
 version: 1.0.0
 status: public-beta
 generated: true
-source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: fcde866ede5144d996a0e4bd2c34ccbcf010c524
+distribution_repository: https://github.com/simeonfab/ResolveOS-beta
+distribution_release: v1.0.0
+upstream_source_commit: fcde866ede5144d996a0e4bd2c34ccbcf010c524
 ---
 
 # ResolveOS Offline / Upload Fallback
 
-Use these files only when the AI tool cannot read the GitHub repo directly.
+Use these files only when the AI tool cannot read `https://github.com/simeonfab/ResolveOS-beta` directly.
 
 GitHub-aware usage should use the root `README.md` and the full file set in the repository instead.
 

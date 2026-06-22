@@ -2,8 +2,8 @@
 type: standard
 scope: global
 owner: ResolveOS
-version: 0.1
-status: draft
+version: 1.0.0
+status: active
 related_context:
   - 01-context/running-context.md
   - 01-context/missing-context-behaviour.md
@@ -17,7 +17,6 @@ related_governance:
   - 06-governance/architecture-decisions.md
 related_skills:
   - 03-skills/information-architecture.md
-review_required: true
 ---
 
 # ResolveOS Entrypoint
@@ -57,6 +56,8 @@ Do not proceed using assumptions when required context exists but has not been l
 Do not substitute chat memory for a required file.
 
 Do not ask the user to choose a workflow when the routing table determines one.
+
+Treat `source_files` metadata and inline extraction notes as historical provenance only. They are not startup requirements and they are not current repository loading instructions.
 
 ## Project Instruction Text
 

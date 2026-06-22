@@ -2,8 +2,8 @@
 type: knowledge_bundle
 scope: global
 owner: ResolveOS
-source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: fcde866ede5144d996a0e4bd2c34ccbcf010c524
+distribution_repository: https://github.com/simeonfab/ResolveOS-beta
+upstream_source_commit: fcde866ede5144d996a0e4bd2c34ccbcf010c524
 generated: true
 generated_date: 2026-06-22
 included_paths:
