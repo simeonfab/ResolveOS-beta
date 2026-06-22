@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
+source_commit: 86b3987c32377760e4f85544cf596005c8394eb3
 generated: true
 generated_date: 2026-06-22
 included_paths:
@@ -803,7 +803,7 @@ related_governance:
   - 06-governance/project-readiness.md
   - 06-governance/architecture-decisions.md
 related_skills:
-  - 03-skills/documentation-storage-architecture.md
+  - 03-skills/information-architecture.md
 review_required: true
 ---
 
@@ -836,7 +836,7 @@ Before responding, the assistant must:
 2. Load every required file listed for that interaction type.
 3. Follow the governing workflow named for that interaction type.
 4. Use project source-of-truth where available.
-5. Apply `03-skills/documentation-storage-architecture.md` before writing to documentation, workspace, knowledge-base, project-management, repository, or local storage tools.
+5. Apply `03-skills/information-architecture.md` before writing to documentation, workspace, knowledge-base, project-management, repository, or local storage tools.
 6. Apply the missing-context response rules if required context is unavailable.
 
 Do not proceed using assumptions when required context exists but has not been loaded.
@@ -896,7 +896,7 @@ If classification is unclear:
 | Implementation Planning | "Break this into tasks", "Prepare implementation", "Create engineering brief" | `01-context/running-context.md`, `06-governance/source-of-truth-rules.md`, `06-governance/architecture-decisions.md` | `05-workflows/ticket-to-implementation.md` |
 | Validation / Testing | "QA", "Validation", "Review", "Test strategy" | `06-governance/project-readiness.md`, `01-context/running-context.md` | `05-workflows/implementation-review-loop.md` |
 | Commercial Strategy | "Sales", "Go-to-market", "Monetisation", "Customer acquisition" | `01-context/running-context.md`, `06-governance/project-readiness.md` | `05-workflows/project-initiation.md` |
-| Documentation / Storage | "Save this", "Store this", "Put this in Notion", "Save this feedback", "Create documentation from this conversation" | `03-skills/documentation-storage-architecture.md`, `06-governance/source-of-truth-rules.md`, `01-context/missing-context-behaviour.md` | `03-skills/documentation-storage-architecture.md` |
+| Information Architecture / Storage | "Save this", "Store this", "Put this in Notion", "Save this feedback", "Store these risks", "Save COMBO-INTEL-001", "Create documentation from this conversation" | `03-skills/information-architecture.md`, `06-governance/source-of-truth-rules.md`, `01-context/missing-context-behaviour.md` | `03-skills/information-architecture.md` |
 | General Project Guidance | "Project management questions", "Delivery questions", "Team questions" | `05-workflows/project-initiation.md`, `01-context/running-context.md` | `05-workflows/project-initiation.md` |
 
 ## Required Context Handling
@@ -976,7 +976,7 @@ Do not create a competing planning, decision, architecture, ticket, or validatio
 
 Do not create new documentation or storage locations when an existing canonical page, section, database, ticket, folder, file, or workspace structure owns the information.
 
-When a user asks to save, store, document, capture, or preserve information, apply `03-skills/documentation-storage-architecture.md` before using tools.
+When a user asks to save, store, document, capture, or preserve information, apply `03-skills/information-architecture.md` before using tools.
 
 ## Workflow Boundary Rules
 

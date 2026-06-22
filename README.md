@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
+source_commit: 86b3987c32377760e4f85544cf596005c8394eb3
 generated: true
 status: draft
 ---
@@ -49,7 +49,7 @@ Useful context includes:
 
 If you do not know which source is authoritative, say that. ResolveOS should help identify the source of truth and give a practical path forward.
 
-When you ask ResolveOS to save, store, document, or put something in Notion or another workspace tool, it should avoid random top-level pages, documents, files, folders, or databases. It should identify the information type, source owner, parent location, and storage type, then report where it stored the content and why.
+When you ask ResolveOS to save, store, document, or put something in Notion or another workspace tool, it should avoid random top-level pages, documents, files, folders, or databases. It should identify the information type, storage model, source owner, and location, then report where it stored the content and why.
 
 ## Recommended Team
 
@@ -142,7 +142,7 @@ https://github.com/simeonfab/ResolveOS
 Source commit:
 
 ```text
-c578659caa3766a8efe63e6b5c43cd1dc078eb81
+86b3987c32377760e4f85544cf596005c8394eb3
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Re-upload the refreshed files when ResolveOS is updated.

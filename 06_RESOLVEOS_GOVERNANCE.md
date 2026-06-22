@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
+source_commit: 86b3987c32377760e4f85544cf596005c8394eb3
 generated: true
 generated_date: 2026-06-22
 included_paths:
@@ -2258,7 +2258,7 @@ Source references:
 - `05-workflows/project-initiation.md`
 - `06-governance/source-of-truth-rules.md`
 
-# ADR-060: Documentation Storage Architecture Is Source-Of-Truth Discipline
+# ADR-060: Information Architecture Governs Storage Decisions
 
 ## Status
 
@@ -2266,49 +2266,53 @@ Accepted for draft migration.
 
 ## Decision
 
-ResolveOS must decide documentation and storage architecture before writing to documentation, workspace, knowledge-base, project-management, repository, or local storage tools.
+ResolveOS must decide information architecture before writing to documentation, workspace, knowledge-base, project-management, repository, or local storage tools.
 
 ResolveOS should identify:
 
 - information type
+- storage model
 - source-of-truth owner
-- parent location
-- storage type
+- location
 - whether existing structure should be updated
 - whether new top-level storage is justified
 
+ResolveOS must not assume durable information becomes a page.
+
 New top-level pages, documents, files, folders, or database structures are justified only for new major projects, product areas, systems, databases, or durable knowledge domains.
 
-Routine feedback, notes, decisions, risks, meeting outputs, implementation context, and conversation summaries should usually be stored inside the relevant existing structure.
+Routine feedback, notes, decisions, risks, meeting outputs, implementation context, discovery items, research items, validation findings, and conversation summaries should usually be stored inside the relevant existing structure using the storage model appropriate to the information type.
 
 ## Rationale
 
 Documentation and workspace tools can become fragmented when AI creates standalone pages, files, folders, documents, or databases for routine information. That creates cleanup work, hides context, and weakens source-of-truth discipline.
 
-ResolveOS already separates global governance from project-owned context and requires source-system-aware planning. Storage location is part of that same discipline: the correct home for information matters as much as the content itself.
+The earlier documentation-storage capability prevented random top-level page creation, but it still risked assuming that durable information should become a page. ResolveOS must first decide what kind of information exists and what storage model should own it.
+
+ResolveOS already separates global governance from project-owned context and requires source-system-aware planning. Information architecture is part of that same discipline: the correct model and home for information matter as much as the content itself.
 
 ## Impact
 
-`03-skills/documentation-storage-architecture.md` is the canonical ResolveOS skill for deciding storage location before writing to documentation and workspace tools.
+`03-skills/information-architecture.md` is the canonical ResolveOS skill for classifying information and selecting storage model, source owner, location, and execution path before writing to documentation and workspace tools.
 
-`00-system/resolveos-entrypoint.md` routes save, store, documentation, Notion, feedback capture, and conversation-preservation requests through the skill.
+`00-system/resolveos-entrypoint.md` routes save, store, documentation, Notion, feedback capture, risk storage, discovery item preservation, and conversation-preservation requests through the skill.
 
-`06-governance/source-of-truth-rules.md` treats storage location as source-of-truth discipline.
+`06-governance/source-of-truth-rules.md` treats storage model and location as source-of-truth discipline.
 
-`05-workflows/project-initiation.md` recommends tools together with the storage model for using them well.
+`05-workflows/project-initiation.md` recommends tools together with the information architecture model for using them well.
 
 Project-specific documentation structures, databases, folders, schemas, tool permissions, and workspace conventions remain project-owned.
 
 Source references:
 
-- `03-skills/documentation-storage-architecture.md`
+- `03-skills/information-architecture.md`
 - `00-system/resolveos-entrypoint.md`
 - `06-governance/source-of-truth-rules.md`
 - `05-workflows/project-initiation.md`
 
 # Enforcement
 
-When future ResolveOS files touch global dependency structure, dependency management, requirement traceability, implementation review, project readiness, canonical project source assessment, tracker/repository reconciliation, evidence-backed continuation, project planning state, decision lifecycle, validation state, documentation storage architecture, canonical AI entrypoint behaviour, role/skill separation, context loading, running context, running-context freshness, chat handoffs, project initiation, update process, duplication control, decision-log templates, missing-context behaviour, project-loading rules, low-risk read-only analysis, metadata, global/project ownership, assistant operating principles, startup context, role-loading rules, role prompt structure, workflow extraction order, workflow ownership, ticket-to-implementation sequence, implementation-review-loop behaviour, feedback-to-ticket transition, template ownership, approved batch mode, previous-ticket inspection, general workflow applicability, Codex execution constraints, no-fake-functionality, cost-safe AI/API behaviour, acceptance-criteria format, ticket context, briefing context, completion reporting, blocker reporting, single-handoff communication, project verification commands, dependency ordering, feedback schema, default message classification, prioritisation filters, Product Manager ticket authority, Product Manager role boundary, Business Analyst ticket authority, QA Tester defect ticket authority, QA role taxonomy, Technical Strategy Lead technical ticket authority, Implementation Engineer ticket proposal authority, low-risk scope clarification, documentation hygiene ownership, or decision-maker reporting, they must follow ADR-001 through ADR-060 unless admin explicitly changes these decisions.
+When future ResolveOS files touch global dependency structure, dependency management, requirement traceability, implementation review, project readiness, canonical project source assessment, tracker/repository reconciliation, evidence-backed continuation, project planning state, decision lifecycle, validation state, information architecture, canonical AI entrypoint behaviour, role/skill separation, context loading, running context, running-context freshness, chat handoffs, project initiation, update process, duplication control, decision-log templates, missing-context behaviour, project-loading rules, low-risk read-only analysis, metadata, global/project ownership, assistant operating principles, startup context, role-loading rules, role prompt structure, workflow extraction order, workflow ownership, ticket-to-implementation sequence, implementation-review-loop behaviour, feedback-to-ticket transition, template ownership, approved batch mode, previous-ticket inspection, general workflow applicability, Codex execution constraints, no-fake-functionality, cost-safe AI/API behaviour, acceptance-criteria format, ticket context, briefing context, completion reporting, blocker reporting, single-handoff communication, project verification commands, dependency ordering, feedback schema, default message classification, prioritisation filters, Product Manager ticket authority, Product Manager role boundary, Business Analyst ticket authority, QA Tester defect ticket authority, QA role taxonomy, Technical Strategy Lead technical ticket authority, Implementation Engineer ticket proposal authority, low-risk scope clarification, documentation hygiene ownership, or decision-maker reporting, they must follow ADR-001 through ADR-060 unless admin explicitly changes these decisions.
 
 # Exceptions
 
@@ -2398,7 +2402,7 @@ ADR-053 through ADR-056 were added from the Batch 7.0 ResolveYGO adoption valida
 
 ADR-057 through ADR-059 were added from the final core project-state management refinement instruction.
 
-ADR-060 was added from the documentation storage architecture instruction.
+ADR-060 was added from the documentation storage architecture instruction and refined by the information architecture instruction.
 
 ---
 
@@ -3993,13 +3997,13 @@ If a project declares Jira, Notion, GitHub Issues, Azure DevOps, or another exte
 
 If no external planning source exists, the project may use a lightweight project-owned current-focus, running-context, plan, or equivalent file. That file belongs to the project, not ResolveOS.
 
-Storage location is part of source-of-truth discipline. If an existing canonical page, section, database, ticket, comment, repository path, folder, file, or document owns the information, ResolveOS must use that location instead of creating a new one.
+Storage model and location are part of source-of-truth discipline. If an existing canonical database, page, section, ticket, comment, repository path, folder, file, document, ADR process, or temporary holding area owns the information, ResolveOS must use that model and location instead of creating a new one.
 
-Before writing to Notion, GitHub markdown, Google Docs, SharePoint, Confluence, local files, Jira, Linear, GitHub Issues, or similar storage tools, ResolveOS should apply `03-skills/documentation-storage-architecture.md`.
+Before writing to Notion, GitHub markdown, Google Docs, SharePoint, Confluence, local files, Jira, Linear, GitHub Issues, or similar storage tools, ResolveOS should apply `03-skills/information-architecture.md`.
 
 New top-level pages, documents, files, folders, or database structures should be created only when the content represents a new major project, product area, system, database, or durable knowledge domain.
 
-Routine feedback, notes, decisions, risks, meeting outputs, implementation context, and conversation summaries should usually be stored inside the relevant existing structure.
+Routine feedback, notes, decisions, risks, meeting outputs, implementation context, discovery items, research items, validation findings, and conversation summaries should usually be stored inside the relevant existing structure using the storage model appropriate to the information type.
 
 When an override exists:
 
