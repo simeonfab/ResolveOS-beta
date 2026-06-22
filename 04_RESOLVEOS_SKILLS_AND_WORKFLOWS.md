@@ -5,11 +5,12 @@ owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
 source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
 generated: true
-generated_date: 2026-06-21
+generated_date: 2026-06-22
 included_paths:
   - 03-skills/acceptance-criteria.md
   - 03-skills/completion-reporting.md
   - 03-skills/dependency-management.md
+  - 03-skills/documentation-storage-architecture.md
   - 03-skills/implementation-review.md
   - 03-skills/requirement-traceability.md
   - 03-skills/ticket-writing.md
@@ -1232,6 +1233,263 @@ Ambiguous for admin review:
 - whether dependency blockers need a dedicated future template
 - whether source systems should distinguish previous, prerequisite, follow-up, duplicate, and blocked-by relationships in a richer canonical schema
 - whether prerequisite commit/push order should remain role/workflow guidance or become stronger global governance
+
+---
+
+# Source: 03-skills/documentation-storage-architecture.md
+
+---
+type: skill
+scope: global
+owner: ResolveOS
+version: 0.1
+status: draft
+related_skills:
+  - 03-skills/user-feedback-processing.md
+  - 03-skills/completion-reporting.md
+related_context:
+  - 01-context/missing-context-behaviour.md
+  - 01-context/context-loading-rules.md
+related_governance:
+  - 06-governance/source-of-truth-rules.md
+  - 06-governance/architecture-decisions.md
+review_required: true
+---
+
+# Documentation Storage Architecture
+
+## Purpose
+
+Govern where information should be stored before ResolveOS writes to any documentation, workspace, knowledge-base, project-management, repository, or local storage tool.
+
+Use this skill before writing to Notion, GitHub markdown, Google Docs, SharePoint, Confluence, local files, Jira, Linear, GitHub Issues, or similar documentation and storage systems.
+
+This skill is about storage architecture. It does not replace source-of-truth governance, project-specific documentation rules, feedback processing, ticket writing, decision logging, or external tool permissions.
+
+## Documentation Storage Principle
+
+ResolveOS should not create unnecessary top-level pages, documents, files, folders, or database structures.
+
+Before writing to any external documentation or workspace tool, ResolveOS must identify the intended information architecture:
+
+- source of truth
+- parent location
+- storage type
+- update existing vs create new
+- whether top-level storage is justified
+
+Creating new top-level storage is allowed only when the content represents a new major project, product area, system, database, or durable knowledge domain.
+
+Routine feedback, notes, decisions, risks, meeting outputs, implementation context, and conversation summaries should usually be stored inside the relevant existing structure.
+
+Storage location is part of source-of-truth discipline. Do not create a new storage location when an existing canonical location exists.
+
+## When To Use
+
+Use this skill when the user asks to:
+
+- save something
+- store something
+- put something in Notion
+- capture feedback
+- create documentation from a conversation
+- preserve a handoff, meeting output, implementation summary, decision, risk, research note, or project context
+- write to a documentation, knowledge-base, workspace, project-management, repository, or local file tool
+
+Use it before the storage tool is called or the file is created.
+
+## Decision Tree
+
+1. Identify information type.
+2. Identify source-of-truth owner.
+3. Search or fetch existing relevant structure where possible.
+4. Prefer updating existing pages, sections, databases, tickets, comments, folders, or files.
+5. Create child pages only for durable sub-topics.
+6. Create top-level pages or files only for new major areas.
+7. Use databases for repeatable structured records.
+8. Ask the user only if location cannot be inferred safely.
+9. Report where it was stored and why.
+
+## Storage Types
+
+Choose the smallest storage shape that preserves context and ownership:
+
+- append to existing page or section
+- update existing page
+- create child page under existing parent
+- create database record
+- create file in an existing folder or path
+- create ticket or comment
+- create a new top-level page or file only when justified
+- use fallback or temporary storage if the intended destination is inaccessible
+
+Fallback storage must be labelled as fallback or temporary and should name the intended destination that was unavailable.
+
+## Information Types
+
+Classify the content before storing it.
+
+Common types include:
+
+- feedback
+- decision
+- risk
+- assumption
+- validation finding
+- implementation handoff
+- meeting output
+- research note
+- operating knowledge
+- project context
+- technical documentation
+- ticket or task context
+- completion or blocker report
+- conversation summary
+
+If more than one type applies, choose the primary owner first, then preserve secondary labels or links where useful.
+
+## Tool Model Guidance
+
+ResolveOS should not merely recommend tools. It should know how to use them well.
+
+Common ownership patterns:
+
+- Notion: product context, strategy, decisions, risks, validation, feedback, operating knowledge.
+- Jira or Linear: execution tracking.
+- GitHub: code, technical docs, implementation evidence, repo-owned context.
+- Confluence, SharePoint, or Google Docs: organisational documentation where they are the declared source of truth.
+
+These are defaults, not hard rules. Project-specific source-of-truth declarations override generic tool preferences.
+
+When recommending a tool, also recommend the storage model that prevents clutter: hubs, child pages, existing folders, existing docs, existing databases, comments, or records as appropriate.
+
+## Non-Delegation Behaviour
+
+Do not ask the user where to store something if the correct location can be inferred.
+
+Do not ask the user to design the documentation structure unless it materially affects ownership or workflow.
+
+If uncertain, propose the best location and explain the assumption.
+
+Ask only the smallest necessary question.
+
+If a storage issue is surfaced, provide the practical resolution path.
+
+## Notion-Specific Behaviour
+
+Treat Notion as a structured workspace, not a flat page dump.
+
+Before writing to Notion:
+
+- search or fetch the relevant hub, parent page, or database before writing
+- do not create top-level Notion pages by default
+- use existing pages where appropriate
+- append to an existing page when content extends an existing topic
+- create a child page under the relevant parent when content is a durable sub-topic
+- use databases for repeated structured records such as feedback, risks, decisions, validation findings, tasks, or research notes
+- use comments only for review or commentary, not permanent structured storage
+- if the intended database or page is inaccessible, report that and use the best fallback
+- if creating fallback storage, label it clearly as fallback or temporary
+
+If ResolveOS recommends Notion, it should understand Notion workspace hygiene:
+
+- hubs
+- child pages
+- databases for repeatable records
+- preserved hierarchy
+- no root-level clutter
+
+Report back using this shape:
+
+```text
+Stored under [location] because [reason].
+```
+
+## Reporting After Storage
+
+After storage, report:
+
+- where the content was stored
+- what storage type was used
+- why that location fit the source-of-truth and information type
+- whether an assumption or fallback was used
+- any inaccessible intended destination or follow-up needed
+
+Do not claim storage happened unless the write actually succeeded.
+
+## Good / Bad Examples
+
+Bad:
+
+```text
+User: "We've just discussed this. Save it somewhere."
+AI creates seven new top-level Notion pages.
+```
+
+Why bad:
+
+- workspace clutter
+- context fragmentation
+- user cleanup
+- broken source-of-truth discipline
+- extra admin
+
+Good:
+
+```text
+I found the Resolve Product Hub and stored this under Feedback because it is product feedback. I created one structured child page for the full write-up and grouped the content into sections. I did not create separate top-level pages because this does not represent new product areas.
+```
+
+## Anti-Patterns
+
+Do not:
+
+- create random top-level pages, documents, files, folders, or databases
+- use Notion as a flat page dump
+- create a new source of truth when an existing one exists
+- split one routine conversation into many standalone documents
+- ask the user to design storage structure when ResolveOS can infer it safely
+- treat tool recommendation as enough without explaining how the tool should be used
+- use comments as permanent structured storage
+- hide fallback or temporary storage
+- claim content was stored, linked, ticketed, or documented unless it was
+
+## Related Governance
+
+- `06-governance/source-of-truth-rules.md`
+- `06-governance/architecture-decisions.md`
+
+## Related Context
+
+- `01-context/missing-context-behaviour.md`
+- `01-context/context-loading-rules.md`
+
+## Related Skills
+
+- `03-skills/user-feedback-processing.md`
+- `03-skills/completion-reporting.md`
+
+## Deferred Items
+
+Deferred because they are project-specific or would overbuild this skill:
+
+- tool-specific database schemas
+- Notion workspace templates
+- Confluence, SharePoint, or Google Docs templates
+- automatic workspace cleanup
+- project-specific taxonomy
+- migration of existing documentation structures
+
+## What This Skill Must Not Do
+
+This skill must not:
+
+- make Notion the only supported model
+- create duplicate source-of-truth systems
+- replace project-specific documentation rules
+- replace feedback processing, ticket writing, or decision logging
+- impose a global database schema
+- create external tool structures without approval
 
 ---
 
@@ -3771,6 +4029,7 @@ related_skills:
   - 03-skills/dependency-management.md
   - 03-skills/requirement-traceability.md
   - 03-skills/implementation-review.md
+  - 03-skills/documentation-storage-architecture.md
 related_templates:
   - 04-templates/briefing-template.md
   - 04-templates/chat-handoff-template.md
@@ -3821,6 +4080,7 @@ Source references:
 - `01-context/role-loading-rules.md` > role selection and role boundaries
 - `01-context/running-context.md` > current-state and handoff discipline
 - `06-governance/source-of-truth-rules.md` > ownership hierarchy
+- `03-skills/documentation-storage-architecture.md` > storage architecture before writing to documentation and workspace tools
 - `06-governance/update-process.md` > layer ownership and project artifact updates
 - `06-governance/duplication-control.md` > avoid duplicate instruction stacks
 - `migration/resolveos-architecture-review.md` > overall architecture and missing capabilities
@@ -3868,6 +4128,7 @@ For an existing project, useful inputs include:
 - existing tickets
 - existing team
 - existing source-of-truth systems
+- existing documentation and storage structure
 - existing context files
 - existing operating model
 - existing roles, chats, prompts, workflows, templates, or handoff files
@@ -3903,6 +4164,7 @@ Assess:
 - recommended chats
 - recommended workflows and templates
 - required tools and integrations
+- recommended storage model for documentation, knowledge-base, workspace, repository, or project-management tools
 - initial tickets, feedback capture, decision logs, or briefing needs
 - constraints, risks, and gaps
 
@@ -3979,6 +4241,7 @@ Core questions:
 - What source systems are missing?
 - Which source is canonical?
 - What tools does the project already use?
+- How are documentation and workspace tools structured today?
 - What project constraints matter?
 - What work is active now?
 - What should not be changed?
@@ -4323,6 +4586,7 @@ Assess:
 - completion and blocker reporting source
 - running context or current-focus source
 - external tools and integrations
+- documentation and storage architecture for source systems
 
 If multiple candidates exist for any canonical source, record the inconsistency and the required confirmation.
 
@@ -4340,6 +4604,17 @@ Classify each source as:
 Project repositories own project-specific facts, decisions, commands, terminology, and context.
 
 ResolveOS owns reusable operating behaviour.
+
+For documentation and storage tools, also identify the existing hub, parent page, database, folder, repository path, ticket area, or document type that should receive routine project information. Do not recommend a new top-level page, file, folder, or database where an existing canonical structure should be used.
+
+Recommended tool model:
+
+- Notion: product context, strategy, decisions, risks, validation, feedback, and operating knowledge. Use hubs, child pages, and databases for repeatable records; avoid root-level clutter.
+- Jira or Linear: execution tracking.
+- GitHub: code, technical docs, implementation evidence, and repo-owned context.
+- Confluence, SharePoint, or Google Docs: organisational documentation where they are the declared source of truth.
+
+These are defaults. Project-specific source-of-truth declarations override generic tool preferences.
 
 # Context Assessment
 
@@ -4505,6 +4780,8 @@ Use existing project files and source systems before asking the admin to restate
 List existing, missing, stale, contradictory, and not-yet-needed source systems.
 
 Do not create or configure external tools automatically.
+
+When recommending tools such as Notion, GitHub, Jira, Linear, SharePoint, Confluence, or Google Docs, also identify how they should be used well: source owner, parent structure, storage type, and whether routine records belong in existing pages, databases, tickets, comments, folders, or files.
 
 ## 5. Identify Canonical Sources
 
@@ -5581,6 +5858,8 @@ The user does not need to prepare a perfect brief before starting.
 
 If a project already uses Jira, Notion, GitHub Issues, Azure DevOps, or another planning source, ResolveOS should use that source. If no planning source exists, ResolveOS can work from a lightweight project-owned current-focus, running-context, plan, or equivalent note.
 
+If a project already uses Notion, Confluence, SharePoint, Google Docs, GitHub, Jira, Linear, local folders, or another documentation or storage tool, ResolveOS should store information into the right existing structure where possible. It should avoid random top-level pages, documents, files, folders, or databases.
+
 # Steps
 
 ## 1. Understand What ResolveOS Does
@@ -5614,10 +5893,13 @@ Encourage users to:
 - share current tasks, blockers, decisions, risks, feedback, validation notes, or handoffs
 - ask for the project state, blocked items, Recommended Team, practical plan, readiness, or implementation handoff
 - restart stale chats by asking for a Project Snapshot or continuation assessment
+- ask ResolveOS to save, document, or preserve useful output without needing to design the storage structure first
 
 If the user does not know the source of truth, ResolveOS should help identify it.
 
 If the user does not know which role, workflow, or setup is needed, ResolveOS should infer the useful next step and ask only for the smallest missing input when needed.
+
+When the user asks ResolveOS to save feedback, capture notes, put something in Notion, or create documentation from a conversation, ResolveOS should identify the information type, source owner, parent location, and storage type before writing. If the destination can be inferred safely, it should proceed with a labelled assumption and report where it stored the information and why.
 
 ## 3. Start With Plain English
 
@@ -5942,6 +6224,7 @@ Common mistakes:
 - uploading lots of files without saying which source matters most
 - treating old notes as current without checking
 - assuming a Jira ticket, Notion page, or README is automatically the source of truth
+- creating top-level Notion pages, documents, files, folders, or databases when existing structure should own the information
 - continuing implementation from memory after a pause
 - asking ResolveOS to build before the current objective is clear
 - worrying about internal architecture before starting
@@ -5999,6 +6282,8 @@ Expected first outcome:
 - identify what each Notion area appears to own
 - find duplication or missing structure
 - recommend a minimal operating model
+- preserve hubs, child pages, and databases for repeatable records
+- avoid root-level clutter
 - avoid moving or rewriting content without approval
 
 ## Jira Project

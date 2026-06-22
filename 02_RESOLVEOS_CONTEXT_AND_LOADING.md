@@ -5,7 +5,7 @@ owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
 source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
 generated: true
-generated_date: 2026-06-21
+generated_date: 2026-06-22
 included_paths:
   - 01-context/context-loading-rules.md
   - 01-context/missing-context-behaviour.md
@@ -226,6 +226,7 @@ related_skills:
   - 03-skills/acceptance-criteria.md
   - 03-skills/user-feedback-processing.md
   - 03-skills/completion-reporting.md
+  - 03-skills/documentation-storage-architecture.md
 review_required: true
 ---
 
@@ -356,6 +357,8 @@ Ask the user to step in when:
 - proceeding would risk inventing facts
 - legal, commercial, personal, account-specific, or approval-sensitive judgement is needed
 - a real-world action cannot be performed by the assistant
+
+For documentation or storage requests, do not ask the user where to store something if the correct source, parent, and storage type can be inferred from loaded context or accessible workspace structure. If the likely location can be inferred safely, proceed with a labelled assumption. If the correct location cannot be inferred safely, ask the smallest necessary question about source owner, parent location, or storage type.
 
 # Context Classification
 
@@ -517,6 +520,8 @@ Fallbacks must not:
 - imply validation, storage, ticketing, deployment, or completion happened when it did not
 - override project source of truth
 
+For documentation or storage requests, fallback storage is allowed only when the intended destination is inaccessible or unavailable and the fallback is clearly labelled temporary or fallback. Report the intended destination, the fallback location, the limitation, and the practical resolution path.
+
 # Contradictory Context Handling
 
 When sources conflict:
@@ -614,6 +619,7 @@ Do not:
 - use a fallback without naming it and stating its limitation
 - dump a blocker, readiness gap, risk, or missing context item without a mitigation path
 - ask the user to manage ResolveOS internals when ResolveOS can choose the next safe step
+- ask the user to design documentation storage structure when the correct storage location can be inferred safely
 
 # Examples
 
