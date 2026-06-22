@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
+source_commit: fcde866ede5144d996a0e4bd2c34ccbcf010c524
 generated: true
 status: draft
 ---
@@ -30,6 +30,7 @@ ResolveOS helps you:
 - see the Recommended Team for the current stage without needing to understand internal role files
 - get practical next actions, mitigations, prompts, and handoffs instead of static status reports
 - continue stale or interrupted projects without restarting from memory
+- store feedback, notes, handoffs, and conversation outputs into the right existing documentation structure where possible
 
 ResolveOS should keep internal framework complexity internal. You should not need to choose workflows, file-loading rules, governance hierarchy, ADRs, or internal routing.
 
@@ -47,6 +48,8 @@ Useful context includes:
 - a latest handoff, current-focus note, running context, or completion report
 
 If you do not know which source is authoritative, say that. ResolveOS should help identify the source of truth and give a practical path forward.
+
+When you ask ResolveOS to save, store, document, or put something in Notion or another workspace tool, it should avoid random top-level pages, documents, files, folders, or databases. It should identify the information type, storage model, source owner, and location, then report where it stored the content and why.
 
 ## Recommended Team
 
@@ -139,7 +142,7 @@ https://github.com/simeonfab/ResolveOS
 Source commit:
 
 ```text
-c578659caa3766a8efe63e6b5c43cd1dc078eb81
+fcde866ede5144d996a0e4bd2c34ccbcf010c524
 ```
 
 Uploaded ChatGPT Project files do not update automatically. Re-upload the refreshed files when ResolveOS is updated.

@@ -3,9 +3,9 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: c578659caa3766a8efe63e6b5c43cd1dc078eb81
+source_commit: fcde866ede5144d996a0e4bd2c34ccbcf010c524
 generated: true
-generated_date: 2026-06-21
+generated_date: 2026-06-22
 included_paths:
   - 04-templates/blocker-report-template.md
   - 04-templates/briefing-template.md
