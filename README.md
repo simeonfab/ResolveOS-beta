@@ -14,6 +14,26 @@ It helps an AI assistant work out what state your project is in, what matters no
 
 Use this README as the main human entrypoint for ResolveOS-beta.
 
+## AI Entrypoint
+
+For GitHub-aware AI tools, use this exact instruction:
+
+```text
+Use this repository as the ResolveOS source:
+https://github.com/simeonfab/ResolveOS-beta
+
+Always begin by reading and following:
+00-system/resolveos-entrypoint.md
+
+Do not bypass it.
+
+If the entrypoint cannot be accessed, loaded, or followed, stop and report the limitation instead of proceeding from memory or making assumptions.
+
+Follow any additional files referenced by the entrypoint.
+```
+
+The repository root is the default GitHub-aware usage path. The folder `chatgpt-project-export/` is only for fallback, offline, or upload-file use.
+
 ## When To Use ResolveOS
 
 Use ResolveOS when you want help to:
@@ -36,12 +56,15 @@ Use this mode when your AI tool can read GitHub repositories or repository files
 Give the AI tool this repository and the instruction below:
 
 ```text
-Use this repository as the ResolveOS source.
+Use this repository as the ResolveOS source:
+https://github.com/simeonfab/ResolveOS-beta
 
 Always begin by reading and following:
 00-system/resolveos-entrypoint.md
 
 Do not bypass it.
+
+If the entrypoint cannot be accessed, loaded, or followed, stop and report the limitation instead of proceeding from memory or making assumptions.
 
 Follow any additional files referenced by the entrypoint.
 ```
@@ -125,22 +148,43 @@ User-facing role labels may be simpler than internal file names. For example, Pr
 If the AI skips setup, ignores the repository, asks you to choose internal files, or gives generic advice, paste this:
 
 ```text
-Use this repository as the ResolveOS source.
+Use this repository as the ResolveOS source:
+https://github.com/simeonfab/ResolveOS-beta
 
 Always begin by reading and following:
 00-system/resolveos-entrypoint.md
 
 Do not bypass it.
 
+If the entrypoint cannot be accessed, loaded, or followed, stop and report the limitation instead of proceeding from memory or making assumptions.
+
 Follow any additional files referenced by the entrypoint.
 ```
 
 Then ask it to restart from the entrypoint and classify the interaction before answering.
 
+## Testing ResolveOS On ResolveOS
+
+ResolveOS can be used to manage ResolveOS work, including this public beta.
+
+Use normal repository safety controls for self-testing:
+
+- work on branches
+- open pull requests for review
+- do not commit directly to `main`
+- do not auto-merge
+- require human approval before merging
+
 ## Versions And Releases
 
 Initial public beta version: `v1.0.0`.
 
-Once releases exist, use the latest stable release for stable testing. The `main` branch may contain the latest beta/current state.
+For stable testing, use the latest release: `https://github.com/simeonfab/ResolveOS-beta/releases/latest`.
+
+The `main` branch may contain the latest beta/current state.
 
 GitHub-aware tools can read the repository directly and can use the latest repository state when instructed. ChatGPT Projects or other tools using uploaded files do not auto-update; re-upload the files in `chatgpt-project-export/` after a new release.
+
+ResolveOS-beta package version is `v1.0.0`. Some internal framework files may still carry `version: 0.1`, `status: draft`, or `review_required: true` metadata to describe internal document maturity. That metadata does not mean the public beta package is unreleased; it means the reusable framework is usable for beta testing and still under validation.
+
+Internal `source_files` metadata and inline extraction notes are historical provenance from the ResolveOS migration process. They are not loading instructions for GitHub-aware tools. Runtime loading is governed by `00-system/resolveos-entrypoint.md` and the files it references.

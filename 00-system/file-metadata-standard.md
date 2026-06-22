@@ -111,6 +111,8 @@ When content is extracted from another repository:
 - Preserve source file information where practical.
 - Preserve review traceability.
 
+Source references are historical provenance. They are not current repository loading instructions unless another active field or workflow explicitly says to load them.
+
 ## Validation Rules
 
 Files should not become active unless:
