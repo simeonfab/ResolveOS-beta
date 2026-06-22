@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 2a41734e93760e3de1084ca166863249190bead5
+source_commit: 80dfe965e5027fbd1d7b80fcef226bfc40184411
 generated: true
 generated_date: 2026-06-22
 included_paths:
@@ -3998,6 +3998,10 @@ If a project declares Jira, Notion, GitHub Issues, Azure DevOps, or another exte
 If no external planning source exists, the project may use a lightweight project-owned current-focus, running-context, plan, or equivalent file. That file belongs to the project, not ResolveOS.
 
 Storage model and location are part of source-of-truth discipline. If an existing canonical database, page, section, ticket, comment, repository path, folder, file, document, ADR process, or temporary holding area owns the information, ResolveOS must use that model and location instead of creating a new one.
+
+Existing storage is evidence, not approval. ResolveOS should not treat an existing page, database, file, folder, ticket, or section as canonical merely because it already exists.
+
+When reviewing existing structures, ResolveOS should classify the information, identify the ideal storage model, identify the current storage model, compare current vs ideal, and recommend whether to keep, move, convert, wrap with a record, merge, mark historical, or keep temporarily with a migration note.
 
 Before writing to Notion, GitHub markdown, Google Docs, SharePoint, Confluence, local files, Jira, Linear, GitHub Issues, or similar storage tools, ResolveOS should apply `03-skills/information-architecture.md`.
 

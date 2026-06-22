@@ -3,7 +3,7 @@ type: knowledge_bundle
 scope: global
 owner: ResolveOS
 source_repository: https://github.com/simeonfab/ResolveOS
-source_commit: 2a41734e93760e3de1084ca166863249190bead5
+source_commit: 80dfe965e5027fbd1d7b80fcef226bfc40184411
 generated: true
 generated_date: 2026-06-22
 included_paths:
@@ -1620,11 +1620,12 @@ Use this skill when the user asks to:
 - put something in Notion
 - capture feedback
 - store risks, discovery items, validation findings, research notes, or decisions
+- review an existing workspace, page set, documentation structure, database, folder, ticket group, or file structure
 - create documentation from a conversation
 - preserve a handoff, meeting output, implementation summary, decision, risk, research note, or project context
 - write to a documentation, knowledge-base, workspace, project-management, repository, or local file tool
 
-Use it before the storage tool is called, the file is created, or a page hierarchy is chosen.
+Use it before the storage tool is called, the file is created, an existing storage model is accepted, or a page hierarchy is chosen.
 
 ## Five-Stage Information Architecture Model
 
@@ -1695,6 +1696,19 @@ durable information = page
 
 Durability means the information should be preserved. It does not decide whether the storage model is a page, database record, ADR, ticket, repository document, comment, or section.
 
+When reviewing existing content, identify both:
+
+- ideal storage model
+- current storage model
+
+Existing structure is evidence, not authority.
+
+Do not preserve a page, database, file, folder, ticket, or section merely because it already exists.
+
+Existing standalone pages should not be grandfathered automatically.
+
+Repeatable or structured information must be evaluated as records or databases for both existing and future content.
+
 ### Stage 3 - Source-Of-Truth Selection
 
 Determine ownership using `06-governance/source-of-truth-rules.md`.
@@ -1736,9 +1750,18 @@ Preference order:
 2. child structure
 3. new structure only if justified
 
+Existing structure is preferred only after it has been evaluated against the information type and ideal storage model.
+
 New top-level pages, documents, files, folders, or database structures should be created only when the content represents a new major project, product area, system, database, or durable knowledge domain.
 
 Routine feedback, notes, decisions, risks, meeting outputs, implementation context, discovery items, research items, validation findings, and conversation summaries should usually be stored inside the relevant existing structure.
+
+If current volume is too low to justify a database, state whether the current page, section, file, or folder structure is:
+
+- a temporary lightweight model with a migration trigger
+- the intended long-term model
+
+If keeping existing pages temporarily, give a clear reason and name the trigger for migration to a better model.
 
 ### Stage 5 - Storage Execution
 
@@ -1758,6 +1781,40 @@ The explanation should include:
 - location choice
 
 Do not claim storage happened unless the write actually succeeded.
+
+## Existing Structure Review
+
+When reviewing existing workspaces or documentation structures, ResolveOS must not assume current structure is correct.
+
+Use this review sequence:
+
+1. Classify the information.
+2. Determine the ideal storage model.
+3. Identify the current storage model.
+4. Compare current vs ideal.
+5. Recommend one of:
+   - keep as-is
+   - move under a better parent
+   - convert to database or record
+   - wrap with a record while retaining the detailed page
+   - merge into an existing section
+   - mark historical or superseded
+   - keep temporarily with a migration note
+6. Explain why.
+
+Existing pages, databases, files, folders, tickets, or sections are evidence of current state, not proof of correct information architecture.
+
+Do not grandfather existing pages just because they are already present.
+
+If an existing page is the wrong storage model, recommend one of:
+
+- convert to database or record
+- wrap with a database record and retain the page as detail
+- move under the correct parent or section
+- mark as historical or superseded
+- keep temporarily with a clear migration note
+
+For repeatable, structured, or likely-to-recur content, evaluate record or database storage for existing content and future content.
 
 ## Documentation Storage
 
@@ -1846,10 +1903,11 @@ A decision is not automatically a page.
 Before writing to Notion:
 
 - classify the information first
+- identify whether any current page, database, or hierarchy is evidence only or the correct model
 - evaluate database records for repeatable record types before page creation
 - search or fetch the relevant hub, parent page, or database before writing
 - do not create top-level Notion pages by default
-- use existing pages where appropriate
+- use existing pages only when they match the evaluated storage model
 - append to an existing page when content extends an existing topic
 - create a child page under the relevant parent when content is a durable sub-topic and a page is the right storage model
 - use databases for repeated structured records such as feedback, risks, decisions, validation findings, tasks, discovery items, or research notes
@@ -1896,9 +1954,24 @@ Expected handling:
 
 ```text
 Information type: discovery item
-Storage model: evaluate discovery record, database, GitHub markdown, or existing discovery section before page creation
+Storage model: evaluate discovery record, database, GitHub markdown, or discovery section before page creation
 Source owner: declared discovery or project documentation source
-Location: selected only after storage model selection
+Current structure: if this already exists as a standalone page, treat that as current-state evidence, not approval
+Location: selected only after comparing current vs ideal storage model
+```
+
+### Existing Discovery Pages
+
+User:
+
+```text
+COMBO-INTEL-001 and COMBO-INTEL-002 already exist as standalone discovery pages.
+```
+
+Expected handling:
+
+```text
+COMBO-INTEL-001 and COMBO-INTEL-002 are existing standalone discovery pages. Their current existence does not prove the storage model is correct. They should be re-evaluated as discovery/research records. With only two items, a dedicated database may be premature, so the safe interim model may be a Discovery / Research section with the pages nested beneath it and labelled as discovery records. If more discovery/spike items are added, convert to a Discovery database or wrap each detailed page with a structured record.
 ```
 
 ### Implementation Handoff
@@ -1952,6 +2025,7 @@ Why bad:
 - broken source-of-truth discipline
 - extra admin
 - assumes durable information means page
+- treats existing pages as automatically valid because they already exist
 
 Good:
 
@@ -1964,6 +2038,8 @@ I classified this as product feedback. The right storage model is a feedback rec
 Do not:
 
 - assume durable information becomes a page
+- assume existing structure is correct because it already exists
+- grandfather existing standalone pages without evaluating current vs ideal storage model
 - create random top-level pages, documents, files, folders, or databases
 - use Notion as a flat page dump
 - create a new source of truth when an existing one exists
