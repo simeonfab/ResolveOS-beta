@@ -1,10 +1,3 @@
-﻿---
-type: public_entrypoint
-scope: global
-owner: ResolveOS
-version: 1.0.0
-status: public-beta
----
 
 # ResolveOS Quick Start Guide
 
@@ -188,3 +181,11 @@ GitHub-aware tools can read the repository directly and can use the latest repos
 ResolveOS-beta package version is `v1.0.0`. Some internal framework files may still carry `version: 0.1`, `status: draft`, or `review_required: true` metadata to describe internal document maturity. That metadata does not mean the public beta package is unreleased; it means the reusable framework is usable for beta testing and still under validation.
 
 Internal `source_files` metadata and inline extraction notes are historical provenance from the ResolveOS migration process. They are not loading instructions for GitHub-aware tools. Runtime loading is governed by `00-system/resolveos-entrypoint.md` and the files it references.
+
+﻿---
+type: public_entrypoint
+scope: global
+owner: ResolveOS
+version: 1.0.0
+status: public-beta
+---
