@@ -6,7 +6,7 @@ version: 1.0.0
 status: public-beta
 ---
 
-# ResolveOS
+# ResolveOS Quick Start Guide
 
 ResolveOS helps you turn ideas, messy project context, existing work, and blocked projects into a clear plan of action.
 
